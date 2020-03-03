@@ -1,4 +1,7 @@
 import java.io.IOException;
+import java.security.KeyStore.TrustedCertificateEntry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Users
 {
@@ -44,6 +47,8 @@ public class Users
         /*
         Need to create a check for already existing usernames.
         */
+
+
         if (username.length() < 12)
         {
             this.username = username;
@@ -55,12 +60,16 @@ public class Users
     public void setPassword(String password)
     
     {
-        // Need to check for special characters.
-        if (passowrd.length() > 8)
+        Pattern p = Pattern.compile("[A-Za-z0-9");
+        Matcher m = p.matcher(password)
+        boolean b = m.find();
+        
+        if (passowrd.length() > 8 && b == true)
+
         {
             this.password = password;
         }
-        throw IOException("Password needs to be atleast 8 characters long.");
+        throw IOException("Password needs to be atleast 8 characters long and have atleast 1 number or a special character.");
         
     }
 
