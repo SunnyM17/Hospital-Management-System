@@ -41,6 +41,9 @@ public class Users
     public void setUsername(String username)
     
     {
+        /*
+        Need to create a check for already existing usernames.
+        */
         if (username.length() < 12)
         {
             this.username = username;
@@ -52,6 +55,7 @@ public class Users
     public void setPassword(String password)
     
     {
+        // Need to check for special characters.
         if (passowrd.length() > 8)
         {
             this.password = password;
