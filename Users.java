@@ -60,12 +60,11 @@ public class Users
     public void setPassword(String password)
     
     {
-        Pattern p = Pattern.compile("[A-Za-z0-9");
-        Matcher m = p.matcher(password)
+        Pattern p = Pattern.compile("[A-Za-z0-9!@#$%&*_<>-]");
+        Matcher m = p.matcher(password);
         boolean b = m.find();
         
         if (passowrd.length() > 8 && b == true)
-
         {
             this.password = password;
         }
