@@ -68,7 +68,7 @@ public class Register extends JPanel {
 		//JList list = new JList();
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Admin", "Doctor", "Pateint", "Assistant"};
+			String[] values = new String[] {"Admin", "Doctor", "Patient", "Assistant"};
 			public int getSize() {
 				return values.length;
 			}
