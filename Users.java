@@ -1,7 +1,5 @@
 
-
 import java.io.IOException;
-import java.security.KeyStore.TrustedCertificateEntry;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,7 +10,6 @@ public class Users
     private String firstName;
     private String lastName;
     private String password;
-   
     private int userID;  
 
     public Users()
@@ -20,27 +17,32 @@ public class Users
 
     }
 
-    public Users(int userID, String username, String passwords)
+    public Users(int userID, String firstname, String lastname,  String password)
     
     {
         setUserID(userID);
-        setUsername(username);
-        setPassword(password);
+        setUsername(firstname, lastname);
+        this.password = password;
     }
     
     public Users(String firstName, String lastName, String password) {
     	setFirstName(firstName);
     	setLastName(lastName);
-    	setPassword(password);
+    	this.password = password;
     }
 
-
+    //========================= GETTER METHODS ==============================================
 
     public String getUsername()
     {
         return username;
     }
     
+    public int getUserID()
+    {
+        return userID;
+    }
+
     public String getPassword()
     {
         return password;
@@ -56,6 +58,9 @@ public class Users
         return lastName;
     }
 
+    // ======================================================================================
+
+    //============================== SETTER METHODS =========================================
     public void setUserID(int userID)
     {
         this.userID = userID;
@@ -72,25 +77,27 @@ public class Users
     }
 
 
-    public void setUsername(String username)
+    public void setUsername(String firstName, String lastName)
     
     {
         /*
-        Need to create a check for already existing usernames.
+        Sets the username based of person's first name and last name.
+        Example: John Doe = john.doe
+
+        TODO: Need to add a check if two people have the same full name. Will do it after we have our database (txt files) ready. 
         */
-
-
-        if (username.length() < 12)
+        if (firstName.length() > 0 && lastName.length() > 0)
         {
-            this.username = username;
+            this.username = firstName + "." + lastName;
         }
         
-    
     }
 
-    public void setPassword(String password)
-    
-    {
+    public void setPassword(String password) throws IOException
+    {/* Checks if the passowrd is matching the requirements (is atleast 8 characters long and contains a special character/number).
+        Otherwise, throws an exception
+    */
+
         Pattern p = Pattern.compile("[A-Za-z0-9!@#$%&*_<>-]");
         Matcher m = p.matcher(password);
         boolean b = m.find();
@@ -99,28 +106,10 @@ public class Users
         {
             this.password = password;
         }
-        //throw  IOException("Password needs to be atleast 8 characters long and have atleast 1 number or a special character.");
+        throw new IOException("Password needs to be atleast 8 characters long and have atleast 1 number or a special character.");
         
     }
     
-    static boolean verifyPassword(String pass) {
-    	if (pass.length() > 8)
-        {
-           return true;
-        }
 
-    	return false;
-    	
-    }
-    
-    static boolean verifyName(String name) {
-    	if (name.length() > 0)
-        {
-           return true;
-        }
-    	
-    	return false;	
-    }
-
-
+    // ==============================================================================================================================
 }  
