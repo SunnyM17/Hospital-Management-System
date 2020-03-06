@@ -2,19 +2,21 @@ import java.util.HashMap;
 
 public class Authorize {
 	
+	
 	private HashMap<Integer, Users> accounts = new HashMap<Integer, Users>() ;
 	public Authorize() {
 		
 	}
 	
-	public int register(String firstName, String lastName , String password, int type) {
-		boolean checkFirstName = Users.verifyName(firstName);
-		boolean checkLastName = Users.verifyName(lastName);
-		boolean checkPassword = Users.verifyPassword(password);
+	public int register(String firstName, String lastName , String password, int role) {
+		/* Creates a new User 
+		 */
+		 boolean checkName = Users.verifyName(firstName, lastName);
+		 boolean checkPassword = Users.verifyPassword(password);
 		
-		if(checkFirstName && checkLastName && checkPassword) {
-			if(type != -1) {
-				int id = generateID(type);
+		if(checkName && checkPassword) {
+			if(role != -1) {
+				int id = generateID(role);
 				accounts.put(id, new Users(firstName, lastName, password));
 				System.out.println(id);
 				return id;
@@ -23,20 +25,22 @@ public class Authorize {
 		return -1;
 	}
 			
-	 int generateID(int type) {
+	 int generateID(int role) {
+		 /* Generates a random ID for the user based on their role
+		  */
 				
 		int userID;
 		do {
-			if(type == 0)
+			if(role == 0)
 					userID = (int) (Math.random() * (2000000 - 1000001) + 1000000);
 				
-			else if(type == 1) 
+			else if(role == 1) 
 					userID = (int) (Math.random() * (3000000 - 2000001) + 2000000);
 					
-			else if(type == 2) 
+			else if(role == 2) 
 					userID = (int) (Math.random() * (4000000 - 3000001) + 3000000);
 					
-			else if(type == 3) 
+			else if(role == 3) 
 					userID = (int) (Math.random() * (5000000 - 4000001) + 4000000);
 				
 			else
@@ -47,6 +51,8 @@ public class Authorize {
 	}
 	 
 	public boolean login(int id, String pass) {
+		/* Allows the user to login by verifying that the ID corresponds to the correct password
+		 */
 			if(accounts.containsKey(id)) {
 				Users temp = accounts.get(id);
 				if(temp.getPassword().equals(pass)) {

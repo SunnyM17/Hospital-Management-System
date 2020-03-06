@@ -28,6 +28,7 @@ public class Users
     public Users(String firstName, String lastName, String password) {
     	setFirstName(firstName);
     	setLastName(lastName);
+    	setUsername(firstName, lastName);
     	this.password = password;
     }
 
@@ -86,7 +87,7 @@ public class Users
 
         TODO: Need to add a check if two people have the same full name. Will do it after we have our database (txt files) ready. 
         */
-        if (firstName.length() > 0 && lastName.length() > 0)
+        if (verifyName(firstName, lastName))
         {
             this.username = firstName + "." + lastName;
         }
@@ -94,7 +95,7 @@ public class Users
     }
 
     public void setPassword(String password) throws IOException
-    {/* Checks if the passowrd is matching the requirements (is atleast 8 characters long and contains a special character/number).
+    {/* Checks if the password is matching the requirements (is at least 8 characters long and contains a special character/number).
         Otherwise, throws an exception
     */
 
@@ -102,7 +103,7 @@ public class Users
         Matcher m = p.matcher(password);
         boolean b = m.find();
         
-        if (password.length() > 8 && b == true)
+        if (verifyPassword(password) && b == true)
         {
             this.password = password;
         }
@@ -112,4 +113,25 @@ public class Users
     
 
     // ==============================================================================================================================
-}  
+
+
+	public static boolean verifyName(String firstName2, String lastName2) {
+		/*  Verifies that the name follows convention
+		 */
+		 if (firstName2.length() > 0 && lastName2.length() > 0){
+			  return true;
+		  }
+		  return false;
+		
+	}
+	
+	public static boolean verifyPassword(String password) {
+		/* Verifies that the password follows convention
+		 */
+		 if (password.length() > 8){
+			  return true;
+		  }
+		  return false;	
+	}
+	
+}

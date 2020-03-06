@@ -84,7 +84,5 @@ public class Main {
 					.addContainerGap(82, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
-		//Login panel = new Login(frame);
-		//frame.setContentPane(panel);
 	}
 }
