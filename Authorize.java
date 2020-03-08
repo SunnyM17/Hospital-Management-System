@@ -1,4 +1,14 @@
 import java.util.HashMap;
+/**
+* Class: Authorize 
+* Class Description: Allows the user to register and login
+* Methods:
+* 		register
+* 		generateID
+* 		login
+*
+* Reference: https://github.com/colinauyeung/loginapp
+*/
 
 public class Authorize {
 	
