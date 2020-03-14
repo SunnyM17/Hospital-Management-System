@@ -6,6 +6,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
 public class Main {
 
@@ -39,10 +40,12 @@ public class Main {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.getContentPane().setBackground(Color.WHITE);
+		frame.setBounds(100, 100, 497, 298);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton loginBtn = new JButton("Login");
+		loginBtn.setBackground(Color.WHITE);
 		loginBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -53,6 +56,7 @@ public class Main {
 		});
 		
 		JButton registerBtn = new JButton("Register");
+		registerBtn.setBackground(Color.WHITE);
 		registerBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -67,21 +71,21 @@ public class Main {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(163)
-							.addComponent(registerBtn))
+							.addGap(201)
+							.addComponent(loginBtn))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(172)
-							.addComponent(loginBtn)))
-					.addContainerGap(176, Short.MAX_VALUE))
+							.addGap(192)
+							.addComponent(registerBtn)))
+					.addContainerGap(194, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(73)
 					.addComponent(loginBtn)
-					.addGap(31)
+					.addGap(18)
 					.addComponent(registerBtn)
-					.addContainerGap(82, Short.MAX_VALUE))
+					.addContainerGap(95, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
