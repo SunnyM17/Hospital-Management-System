@@ -18,11 +18,17 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 import java.awt.SystemColor;
 import javax.swing.border.MatteBorder;
+import javax.swing.JScrollBar;
+import java.awt.ScrollPane;
 
 public class Register extends JPanel {
 	private JTextField firstName;
 	private JTextField lastName;
 	private JTextField password;
+	private JTextField email;
+	private JTextField address;
+	private JTextField phoneNum;
+	private JTextField confirmPass;
 
 	/**
 	 * Create the panel.
@@ -41,32 +47,26 @@ public class Register extends JPanel {
 		lastName = new JTextField();
 		lastName.setColumns(10);
 		
-		JLabel titleLbl = new JLabel("Register");
-		titleLbl.setForeground(Color.BLACK);
-		titleLbl.setFont(new Font("Serif", Font.BOLD, 20));
-		
 		password = new JTextField();
 		password.setColumns(10);
 		
 		JList list = new JList();
 		list.setBackground(SystemColor.control);
 		
-		JButton registerBtn = new JButton("Register");
+		JButton registerBtn = new JButton("Done");
 		registerBtn.setForeground(Color.BLACK);
 		registerBtn.setBackground(SystemColor.control);
 		registerBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				
-				String name1 = firstName.getText();
-				String name2 = lastName.getText();
-				String pass = password.getText();
 				int type = list.getSelectedIndex();
-				int id = newUser.register(name1, name2, pass, type);
+				int id = newUser.register(firstName.getText(), lastName.getText(), email.getText(), phoneNum.getText(), address.getText(), password.getText(),confirmPass.getText(), type);
 				
 				if(id!=-1) {
 					DisplayID panel = new DisplayID(frame, newUser, id);
 					frame.setContentPane(panel);
+					frame.setSize(499, 303);
 					frame.revalidate();	
 				}
 			}
@@ -83,57 +83,113 @@ public class Register extends JPanel {
 				return values[index];
 			}
 		});
+		
+		JLabel emailLbl = new JLabel("Email");
+		
+		JLabel addressLbl = new JLabel("Address");
+		
+		email = new JTextField();
+		email.setColumns(10);
+		
+		address = new JTextField();
+		address.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("Phone Number");
+		
+		phoneNum = new JTextField();
+		phoneNum.setColumns(10);
+		
+		JLabel confirmPassLbl = new JLabel("Confirm Password");
+		
+		confirmPass = new JTextField();
+		confirmPass.setColumns(10);
+		
+		JLabel titleLbl = new JLabel("Register");
+		titleLbl.setFont(new Font("Tahoma", Font.BOLD, 18));
+		
+		JLabel selectionLbl = new JLabel("Select One");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(23)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lastNameLbl)
+						.addComponent(firstNameLbl)
+						.addComponent(emailLbl)
+						.addComponent(addressLbl)
+						.addComponent(lblNewLabel_2))
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(email, 0, 0, Short.MAX_VALUE)
+						.addComponent(phoneNum, 0, 0, Short.MAX_VALUE)
+						.addComponent(address, GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(lastName, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+								.addComponent(firstName, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGap(32)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(93)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(firstNameLbl)
-								.addComponent(lastNameLbl)
-								.addComponent(passLbl))
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(registerBtn)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(firstName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lastName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-									.addGap(18)
-									.addComponent(list, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(201)
-							.addComponent(titleLbl)))
-					.addContainerGap(74, Short.MAX_VALUE))
+						.addComponent(passLbl, Alignment.TRAILING)
+						.addComponent(selectionLbl, Alignment.TRAILING)
+						.addComponent(confirmPassLbl, Alignment.TRAILING))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(password, 0, 0, Short.MAX_VALUE)
+							.addComponent(confirmPass, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+						.addComponent(list, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(49, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap(289, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(registerBtn)
+						.addComponent(titleLbl))
+					.addGap(260))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+					.addContainerGap()
+					.addComponent(titleLbl)
+					.addGap(24)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(firstNameLbl)
+						.addComponent(firstName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(passLbl)
+						.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lastNameLbl, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lastName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(confirmPassLbl)
+						.addComponent(confirmPass, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(90)
-							.addComponent(list, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(emailLbl)
+								.addComponent(email, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(addressLbl)
+								.addComponent(address, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblNewLabel_2))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(11)
+									.addComponent(phoneNum, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(titleLbl)
-							.addGap(34)
+							.addGap(21)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(firstName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(firstNameLbl))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lastName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lastNameLbl))
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(passLbl))))
-					.addGap(28)
-					.addComponent(registerBtn)
-					.addContainerGap(50, Short.MAX_VALUE))
+								.addComponent(list, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+								.addComponent(selectionLbl))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(registerBtn)))
+					.addGap(20))
 		);
 		setLayout(groupLayout);
 		

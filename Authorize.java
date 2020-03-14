@@ -18,11 +18,11 @@ public class Authorize {
 		
 	}
 	
-	public int register(String firstName, String lastName , String password, int role) {
+	public int register(String firstName, String lastName , String email, String address, String num, String password, String pass2, int role) {
 		/* Creates a new User 
 		 */
 		 boolean checkName = Users.verifyName(firstName, lastName);
-		 boolean checkPassword = Users.verifyPassword(password);
+		 boolean checkPassword = Users.verifyPassword(password, pass2);
 		
 		if(checkName && checkPassword) {
 			if(role != -1) {

@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Main {
 
@@ -41,7 +42,7 @@ public class Main {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 497, 298);
+		frame.setBounds(100, 100, 639, 309);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton loginBtn = new JButton("Login");
@@ -62,6 +63,7 @@ public class Main {
 			public void mouseClicked(MouseEvent e) {
 				Register panel2 = new Register(frame, auth);
 				frame.setContentPane(panel2);
+				frame.setSize(629, 329);
 				frame.revalidate();
 			}
 		});
@@ -69,23 +71,23 @@ public class Main {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(266, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(201)
-							.addComponent(loginBtn))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(192)
-							.addComponent(registerBtn)))
-					.addContainerGap(194, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addComponent(loginBtn)
+							.addGap(272))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addComponent(registerBtn)
+							.addGap(262))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(73)
 					.addComponent(loginBtn)
-					.addGap(18)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(registerBtn)
-					.addContainerGap(95, Short.MAX_VALUE))
+					.addContainerGap(106, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}

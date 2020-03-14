@@ -103,7 +103,7 @@ public class Users
         Matcher m = p.matcher(password);
         boolean b = m.find();
         
-        if (verifyPassword(password) && b == true)
+        if (password.length() > 8 && b == true)
         {
             this.password = password;
         }
@@ -125,10 +125,10 @@ public class Users
 		
 	}
 	
-	public static boolean verifyPassword(String password) {
+	public static boolean verifyPassword(String password, String confirmPass) {
 		/* Verifies that the password follows convention
 		 */
-		 if (password.length() > 8){
+		 if (password.length() > 8 && password.equals(confirmPass)){
 			  return true;
 		  }
 		  return false;	
