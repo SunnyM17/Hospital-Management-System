@@ -9,6 +9,11 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.SystemColor;
+import java.awt.Color;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.MatteBorder;
 
 public class Login extends JPanel {
 	private JTextField idTxtField;
@@ -18,6 +23,8 @@ public class Login extends JPanel {
 	 * Create the panel.
 	 */
 	public Login(JFrame frame, Authorize returningUser) {
+		setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		setBackground(Color.WHITE);
 		
 		idTxtField = new JTextField();
 		idTxtField.setColumns(10);
@@ -48,22 +55,19 @@ public class Login extends JPanel {
 		loginLbl.setFont(new Font("Tahoma", Font.BOLD, 20));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addGap(33)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(112, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(passLbl)
+						.addComponent(idLbl))
+					.addGap(38)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(idLbl)
-						.addComponent(passLbl))
-					.addPreferredGap(ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(loginLbl)
 						.addComponent(doneBtn)
 						.addComponent(passTxtField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(idTxtField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(135))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(183)
-					.addComponent(loginLbl)
-					.addContainerGap(228, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -80,7 +84,7 @@ public class Login extends JPanel {
 						.addComponent(passLbl))
 					.addGap(54)
 					.addComponent(doneBtn)
-					.addContainerGap(58, Short.MAX_VALUE))
+					.addContainerGap(53, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 
