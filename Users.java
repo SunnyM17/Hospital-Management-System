@@ -132,13 +132,13 @@ public class Users
         Pattern p = Pattern.compile("[A-Za-z0-9!@#$%&*_<>-]");
         Matcher m = p.matcher(password);
         boolean b = m.find();
-        
-        if (password.length() > 8 && b == true)
+
+        if (password.length() >= 8 && b == true)
         {
             this.password = password;
+        } else {
+            throw new IOException("Password needs to be atleast 8 characters long and have atleast 1 number or a special character.");
         }
-        throw new IOException("Password needs to be atleast 8 characters long and have atleast 1 number or a special character.");
-        
     }
     
     public void setEmail(String email) {

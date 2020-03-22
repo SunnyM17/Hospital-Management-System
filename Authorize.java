@@ -1,4 +1,5 @@
 import java.util.HashMap;
+
 /**
 * Class: Authorize 
 * Class Description: Allows the user to register and login
@@ -13,7 +14,7 @@ import java.util.HashMap;
 public class Authorize {
 	
 	
-	private HashMap<Integer, Users> accounts = new HashMap<Integer, Users>() ;
+	private HashMap<Integer, Users> accounts = new HashMap<Integer, Users>();
 	public Authorize() {
 		
 	}
@@ -80,6 +81,8 @@ public class Authorize {
 		 */
 		FileSystem newFile = new FileSystem(""+id);
 		newFile.writeGeneralInfoFile(newFile.getFile(), newUser);
+		// load into database
+		Database.load(newFile.getFile());
 	}
 }
 
