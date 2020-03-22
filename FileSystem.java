@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 public class FileSystem {
 
+
 	private File file;
 	
 	public FileSystem(String name) {
@@ -20,14 +21,17 @@ public class FileSystem {
 		 */
 		
 		try {
-			File newFile = new File("C:\\Hospital-Management-System-master\\Files\\" + name + ".txt");
+			/* To write to text file: Change LOCATION string in Database class
+			* to the local folders that you keep the database directory in
+			* */
+			File newFile = new File(Database.LOCATION + "\\" + name + ".txt");
 			this.file = newFile;
 			if(!newFile.createNewFile()) {
 				System.out.println("File already exists");
 			}
 			
 		} catch(Exception e) {
-			System.out.println("Error");
+			System.out.println("Error: "+e.toString());
 		}
 	}
 		
@@ -48,7 +52,7 @@ public class FileSystem {
 		} catch(IOException e) {
 			System.out.println("There was an error");
 
-		}	
+		}
 	}
 	
 	public void writeToFile(File file, String info) {
@@ -64,4 +68,8 @@ public class FileSystem {
 			System.out.println("There was an error");
 		}
 	}
+
+
+
+
 }
