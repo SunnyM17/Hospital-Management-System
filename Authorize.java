@@ -12,11 +12,8 @@ import java.util.HashMap;
 */
 
 public class Authorize {
-	
-	
-	private HashMap<Integer, Users> accounts = new HashMap<Integer, Users>();
+
 	public Authorize() {
-		
 	}
 	
 	public int register(String firstName, String lastName , String email, String address, String num, String password, String pass2, int role) {
@@ -29,9 +26,7 @@ public class Authorize {
 			if(role != -1) {
 				int id = generateID(role);
 				Users newUser = new Users(firstName, lastName, id, password, email, address, num);
-				accounts.put(id, newUser);
-				System.out.println(id);
-				newRecord(id, newUser);	
+				newRecord(id, newUser);
 				return id;
 			}
 		}
@@ -58,7 +53,7 @@ public class Authorize {
 				
 			else
 					userID = -1;	
-		} while(accounts.containsKey(userID)); 
+		} while(Database.userExists(userID));
 			 					
 				return userID;
 	}
@@ -66,13 +61,12 @@ public class Authorize {
 	public boolean login(int id, String pass) {
 		/* Allows the user to login by verifying that the ID corresponds to the correct password
 		 */
-			if(accounts.containsKey(id)) {
-				Users temp = accounts.get(id);
-				if(temp.getPassword().equals(pass)) {
-					return true;
+			if(Database.userExists(id)) {
+				Users temp = Database.getUser(id);
+				if (temp != null) {
+					return temp.getPassword().equals(pass);
 				}
 			}
-			
 			return false;
 	}
 	

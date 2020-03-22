@@ -1,8 +1,7 @@
 public class Admin extends Users
 {
     private int adminID = 300;
-        
-    }
+
     public Admin()
     {
         super.getUserID();

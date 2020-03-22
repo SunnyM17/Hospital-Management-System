@@ -1,7 +1,5 @@
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -115,6 +113,14 @@ public class Database {
         }
 
 
+    }
+
+    public static Users getUser(Integer userId){
+        return USERS.get(userId);
+    }
+
+    public static boolean userExists(Integer userId){
+        return USERS.containsKey(userId);
     }
 
 
