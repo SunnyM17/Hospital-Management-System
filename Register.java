@@ -62,7 +62,7 @@ public class Register extends JPanel {
 				
 				int type = list.getSelectedIndex();
 				int id = newUser.register(firstName.getText(), lastName.getText(), email.getText(), phoneNum.getText(), address.getText(), password.getText(),confirmPass.getText(), type);
-				
+					
 				if(id!=-1) {
 					DisplayID panel = new DisplayID(frame, newUser, id);
 					frame.setContentPane(panel);

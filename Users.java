@@ -10,6 +10,9 @@ public class Users
     private String firstName;
     private String lastName;
     private String password;
+    private String email;
+    private String address;
+    private String phoneNum;
     private int userID;  
 
     public Users()
@@ -31,6 +34,18 @@ public class Users
     	setUsername(firstName, lastName);
     	this.password = password;
     }
+    
+    public Users(String firstName, String lastName, int id, String password, String email, String address, String phoneNum) {
+    	setFirstName(firstName);
+    	setLastName(lastName);
+    	setUsername(firstName, lastName);
+    	setUserID(id);
+    	setEmail(email);
+    	setAddress(address);
+    	setPhoneNum(phoneNum);
+    	this.password = password;
+    }
+
 
     //========================= GETTER METHODS ==============================================
 
@@ -49,7 +64,7 @@ public class Users
         return password;
     }
 
-    public String getfirstName()
+    public String getFirstName()
     {
         return firstName;
     }
@@ -58,7 +73,22 @@ public class Users
     {
         return lastName;
     }
-
+    
+    public String getEmail()
+    {
+        return email;
+    }
+    
+    public String getAddress()
+    {
+        return address;
+    }
+    
+    public String getPhoneNum()
+    {
+        return phoneNum;
+    }
+    
     // ======================================================================================
 
     //============================== SETTER METHODS =========================================
@@ -111,6 +141,18 @@ public class Users
         
     }
     
+    public void setEmail(String email) {
+    	this.email = email;
+    }
+    
+    public void setAddress(String address) {
+    	this.address = address;
+    }
+    
+    public void setPhoneNum(String phoneNum) {
+    	this.phoneNum = phoneNum;
+    }
+
 
     // ==============================================================================================================================
 
@@ -133,5 +175,6 @@ public class Users
 		  }
 		  return false;	
 	}
+	
 	
 }

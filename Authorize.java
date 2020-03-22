@@ -27,8 +27,10 @@ public class Authorize {
 		if(checkName && checkPassword) {
 			if(role != -1) {
 				int id = generateID(role);
-				accounts.put(id, new Users(firstName, lastName, password));
+				Users newUser = new Users(firstName, lastName, id, password, email, address, num);
+				accounts.put(id, newUser);
 				System.out.println(id);
+				newRecord(id, newUser);	
 				return id;
 			}
 		}
@@ -71,6 +73,13 @@ public class Authorize {
 			}
 			
 			return false;
-	}		
+	}
+	
+	public void newRecord(int id, Users newUser) {
+		/* Creates a new file for the user with all the general information 
+		 */
+		FileSystem newFile = new FileSystem(""+id);
+		newFile.writeGeneralInfoFile(newFile.getFile(), newUser);
+	}
 }
 
