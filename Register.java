@@ -20,15 +20,16 @@ import java.awt.SystemColor;
 import javax.swing.border.MatteBorder;
 import javax.swing.JScrollBar;
 import java.awt.ScrollPane;
+import javax.swing.JPasswordField;
 
 public class Register extends JPanel {
 	private JTextField firstName;
 	private JTextField lastName;
-	private JTextField password;
 	private JTextField email;
 	private JTextField address;
 	private JTextField phoneNum;
-	private JTextField confirmPass;
+	private JPasswordField passField;
+	private JPasswordField confirmPassField;
 
 	/**
 	 * Create the panel.
@@ -47,9 +48,6 @@ public class Register extends JPanel {
 		lastName = new JTextField();
 		lastName.setColumns(10);
 		
-		password = new JTextField();
-		password.setColumns(10);
-		
 		JList list = new JList();
 		list.setBackground(SystemColor.control);
 		
@@ -61,7 +59,7 @@ public class Register extends JPanel {
 			public void mousePressed(MouseEvent e) {
 				
 				int type = list.getSelectedIndex();
-				int id = newUser.register(firstName.getText(), lastName.getText(), email.getText(), phoneNum.getText(), address.getText(), password.getText(),confirmPass.getText(), type);
+				int id = newUser.register(firstName.getText(), lastName.getText(), email.getText(), phoneNum.getText(), address.getText(), passField.getText(),confirmPassField.getText(), type);
 					
 				if(id!=-1) {
 					DisplayID panel = new DisplayID(frame, newUser, id);
@@ -101,16 +99,17 @@ public class Register extends JPanel {
 		
 		JLabel confirmPassLbl = new JLabel("Confirm Password");
 		
-		confirmPass = new JTextField();
-		confirmPass.setColumns(10);
-		
 		JLabel titleLbl = new JLabel("Register");
 		titleLbl.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
 		JLabel selectionLbl = new JLabel("Select One");
+		
+		passField = new JPasswordField();
+		
+		confirmPassField = new JPasswordField();
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(23)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -136,13 +135,12 @@ public class Register extends JPanel {
 						.addComponent(confirmPassLbl, Alignment.TRAILING))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-							.addComponent(password, 0, 0, Short.MAX_VALUE)
-							.addComponent(confirmPass, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
-						.addComponent(list, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(49, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(289, Short.MAX_VALUE)
+						.addComponent(list, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+						.addComponent(passField, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+						.addComponent(confirmPassField, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(265, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(registerBtn)
 						.addComponent(titleLbl))
@@ -158,13 +156,13 @@ public class Register extends JPanel {
 						.addComponent(firstNameLbl)
 						.addComponent(firstName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(passLbl)
-						.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(passField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lastNameLbl, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lastName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(confirmPassLbl)
-						.addComponent(confirmPass, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(confirmPassField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)

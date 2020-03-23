@@ -40,19 +40,19 @@ public class Authorize {
 		int userID;
 		do {
 			if(role == 0)
-					userID = (int) (Math.random() * (2000000 - 1000001) + 1000000);
+				userID = (int) (Math.random() * (2000000 - 1000001) + 1000000);
 				
 			else if(role == 1) 
-					userID = (int) (Math.random() * (3000000 - 2000001) + 2000000);
+				userID = (int) (Math.random() * (3000000 - 2000001) + 2000000);
 					
 			else if(role == 2) 
-					userID = (int) (Math.random() * (4000000 - 3000001) + 3000000);
+				userID = (int) (Math.random() * (4000000 - 3000001) + 3000000);
 					
 			else if(role == 3) 
-					userID = (int) (Math.random() * (5000000 - 4000001) + 4000000);
+				userID = (int) (Math.random() * (5000000 - 4000001) + 4000000);
 				
 			else
-					userID = -1;	
+				userID = -1;	
 		} while(Database.userExists(userID));
 			 					
 				return userID;
