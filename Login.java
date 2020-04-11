@@ -46,10 +46,10 @@ public class Login extends JPanel {
 				System.out.println(temp);
 			
 				int value = id/1000000;
-				if(value == 1) {
-					AdminPage panel = new AdminPage(frame, Database.getUser(id));
+				if(value == 1 && temp) {
+					AdminPage panel = new AdminPage(frame, Database.getAdmin(id));
 					frame.setContentPane(panel);
-					frame.setSize(653, 460);
+					frame.setSize(657, 432);
 					frame.revalidate();	
 				}
 					

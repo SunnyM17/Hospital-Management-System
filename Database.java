@@ -15,7 +15,7 @@ public class Database {
      * Change LOCATION string based on where you store the project locally
      * depending on absolute path of where you keep the database
      * **/
-    static final String LOCATION = "C:\\Users\\carme\\Desktop\\SENG 300\\Group Project\\SENG 300 - Github Repo\\Hospital-Management-System\\database";
+    static final String LOCATION = "C:\\Hospital-Management-System\\Hospital-Management-System-master\\database";
 
     /** Maps of all users **/
     private static final Map<Integer,Users> USERS = new HashMap<>();
@@ -39,7 +39,7 @@ public class Database {
     }
 
     /**
-     * Loads all users - is called at start of progam
+     * Loads all users - is called at start of program
      * **/
     public static void reload(){
 
@@ -89,6 +89,7 @@ public class Database {
                 users = assistant;
             }
 
+            
             // Scans each line in txt and sets the corresponding data
             Scanner scanner = new Scanner(userFile);
             String firstName = scanner.nextLine();
@@ -104,10 +105,11 @@ public class Database {
             users.setEmail(email);
             users.setAddress(address);
             users.setPhoneNum(phoneNumber);
+            scanner.close();
 
             USERS.put(integerId,users);
             System.out.println("Database Loaded User: "+integerId);
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -118,15 +120,18 @@ public class Database {
     public static Users getUser(Integer userId){
         return USERS.get(userId);
     }
+    
+    public static Admin getAdmin(Integer userId){
+        return ADMINS.get(userId);
+    }
 
     public static boolean userExists(Integer userId){
         return USERS.containsKey(userId);
     }
-
-
-
-
-
-
-
+    
+    public static Map getAllUsers() {
+    	return USERS;
+    }
+	
 }
+

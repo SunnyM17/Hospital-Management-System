@@ -1,29 +1,26 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JLayeredPane;
-import java.awt.Font;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.SystemColor;
-import javax.swing.JButton;
-import javax.swing.SwingConstants;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
-/**
- * Displays the page that the Administrator will see
- * when it logins to the system.
- */
-public class AdminPage extends JPanel {
+public class AssistantPage extends JPanel {
 
-	public AdminPage(JFrame frame, Admin adminUser) {
+	/**
+	 * Create the panel.
+	 */
+	public AssistantPage(JFrame frame, Users assistantUser) {
 		
+
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.WHITE);
 		
@@ -57,30 +54,18 @@ public class AdminPage extends JPanel {
 					.addContainerGap())
 		);
 		
-		JButton manageEmployeesBtn = new JButton("Manage Users");
-		manageEmployeesBtn.addMouseListener(new MouseAdapter() {
+		JButton appointmentsBtn = new JButton(" Appointments");
+		appointmentsBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				ManageUsersPage panel = new ManageUsersPage(frame, adminUser);
-				frame.setContentPane(panel);
-				frame.revalidate();	
-				
 			}
 		});
-		manageEmployeesBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		appointmentsBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton statsBtn = new JButton("Generate Statistics");
+		JButton statsBtn = new JButton("");
 		statsBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton addDepartmentBtn = new JButton("Add Department");
-		addDepartmentBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				AddDepartmentPage panel = new AddDepartmentPage(frame, adminUser);
-				frame.setContentPane(panel);
-				frame.revalidate();	
-			}
-		});
+		JButton addDepartmentBtn = new JButton("Schedule Lab Test");
 		addDepartmentBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout gl_panel3 = new GroupLayout(panel3);
 		gl_panel3.setHorizontalGroup(
@@ -88,7 +73,7 @@ public class AdminPage extends JPanel {
 				.addGroup(gl_panel3.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel3.createParallelGroup(Alignment.LEADING)
-						.addComponent(manageEmployeesBtn, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE)
+						.addComponent(appointmentsBtn, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE)
 						.addComponent(statsBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
 						.addComponent(addDepartmentBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
 					.addContainerGap())
@@ -97,7 +82,7 @@ public class AdminPage extends JPanel {
 			gl_panel3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel3.createSequentialGroup()
 					.addGap(58)
-					.addComponent(manageEmployeesBtn)
+					.addComponent(appointmentsBtn)
 					.addGap(29)
 					.addComponent(statsBtn)
 					.addGap(27)
@@ -110,7 +95,7 @@ public class AdminPage extends JPanel {
 		
 		JLabel nameLbL = new JLabel("New label");
 		nameLbL.setFont(new Font("Times New Roman", Font.PLAIN, 17));
-		nameLbL.setText("Welcome " + adminUser.getFirstName() + " " + adminUser.getLastName() + " !");
+		nameLbL.setText("Welcome " + assistantUser.getFirstName() + " " +  assistantUser.getLastName() + " !");
 		
 		JLayeredPane layeredPane = new JLayeredPane();
 		GroupLayout gl_panel2 = new GroupLayout(panel2);
@@ -143,15 +128,6 @@ public class AdminPage extends JPanel {
 		hospitalNameLbl.setFont(new Font("Tahoma", Font.BOLD, 19));
 		
 		JButton logoutBtn = new JButton("Logout");
-		logoutBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				LogoutPage panel = new LogoutPage(frame);
-				frame.setContentPane(panel);
-				frame.revalidate();	
-				
-			}
-		});
 		logoutBtn.setBackground(Color.LIGHT_GRAY);
 		logoutBtn.setForeground(Color.BLACK);
 		logoutBtn.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -177,6 +153,8 @@ public class AdminPage extends JPanel {
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);
 		
-		
+
+
 	}
+
 }
