@@ -15,7 +15,7 @@ public class Database {
      * Change LOCATION string based on where you store the project locally
      * depending on absolute path of where you keep the database
      * **/
-    static final String LOCATION = "C:\\Hospital-Management-System\\Hospital-Management-System-master\\database";
+    static final String LOCATION = "C:\\Users\\carme\\Desktop\\SENG 300\\Group Project\\SENG 300 - Github Repo\\Hospital-Management-System\\database";
 
     /** Maps of all users **/
     private static final Map<Integer,Users> USERS = new HashMap<>();
@@ -123,6 +123,10 @@ public class Database {
     
     public static Admin getAdmin(Integer userId){
         return ADMINS.get(userId);
+    }
+    
+    public static Patient getPatient(Integer userId){
+        return PATIENTS.get(userId);
     }
 
     public static boolean userExists(Integer userId){

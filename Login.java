@@ -34,25 +34,55 @@ public class Login extends JPanel {
 		
 		JLabel passLbl = new JLabel("Password");
 		
-		JButton doneBtn = new JButton("Done");
+		JLabel errorLbl = new JLabel("ID or password incorrect");
+		errorLbl.setForeground(Color.RED);
+		errorLbl.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		errorLbl.setVisible(false);
+		
+		JButton doneBtn = new JButton("Enter");
 		doneBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-	
-				int id = Integer.parseInt(idTxtField.getText());
-				String pass = passwordField.getText();
-				
-				boolean temp = returningUser.login(id, pass);
-				System.out.println(temp);
-			
-				int value = id/1000000;
-				if(value == 1 && temp) {
-					AdminPage panel = new AdminPage(frame, Database.getAdmin(id));
-					frame.setContentPane(panel);
-					frame.setSize(657, 432);
-					frame.revalidate();	
-				}
+				try {
+					int id = Integer.parseInt(idTxtField.getText());
+					String pass = passwordField.getText();
 					
+					boolean temp = returningUser.login(id, pass);
+					System.out.println(temp);
+					/* print error if username is incorrect (username must be numbers) */
+					if(temp == false) {
+							errorLbl.setVisible(true);
+					}
+					
+					int value = id/1000000;
+					/* ID starts with 1, go to admin GUI */
+					if(value == 1 && temp) {
+						AdminPage panel = new AdminPage(frame, Database.getAdmin(id));
+						frame.setContentPane(panel);
+						frame.setSize(657, 432);
+						frame.revalidate();	
+					}
+					/* ID starts with 2, go to doctor GUI */
+					else if(value == 2 && temp) {
+						System.out.println("docor login");
+					}
+					/* ID starts with 3, go to patient GUI */
+					else if(value == 3 && temp) {
+						System.out.println("patient login");
+						PatientPage patientPanel = new PatientPage(frame, Database.getPatient(id));
+						frame.setContentPane(patientPanel);
+						frame.setSize(657, 432);
+						frame.revalidate();	
+					}
+					/* ID starts with 3, go to assistant GUI */
+					else if(value == 4 && temp) {
+						System.out.println("assistant login");
+					}
+				/* catch exception if username contains more than just numbers */
+				} catch(Exception loginEx) {
+					errorLbl.setVisible(true);
+					loginEx.printStackTrace();
+				}	
 			}
 		});
 		
@@ -60,21 +90,24 @@ public class Login extends JPanel {
 		loginLbl.setFont(new Font("Tahoma", Font.BOLD, 20));
 		
 		passwordField = new JPasswordField();
+		
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(62, Short.MAX_VALUE)
+					.addContainerGap(57, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(passLbl)
 						.addComponent(idLbl))
 					.addGap(38)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(doneBtn)
 						.addComponent(passwordField)
 						.addComponent(loginLbl)
-						.addComponent(doneBtn)
-						.addComponent(idTxtField))
-					.addGap(135))
+						.addComponent(errorLbl, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(idTxtField, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
+					.addGap(109))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -89,9 +122,11 @@ public class Login extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(passLbl)
 						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(37)
+					.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+					.addComponent(errorLbl)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(doneBtn)
-					.addContainerGap(51, Short.MAX_VALUE))
+					.addGap(46))
 		);
 		setLayout(groupLayout);
 

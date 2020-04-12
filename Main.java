@@ -8,6 +8,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class Main {
 
@@ -70,27 +72,43 @@ public class Main {
 				frame.revalidate();
 			}
 		});
+		
+		JLabel welcomeLabel = new JLabel("Welcome to the AHS Hospital Management System");
+		welcomeLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		
+		JLabel welcomeDescriptionLabel = new JLabel("To begin, select from one of the options below");
+		welcomeDescriptionLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(266, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addComponent(loginBtn)
-							.addGap(272))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addComponent(registerBtn)
-							.addGap(262))))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(273)
+							.addComponent(loginBtn))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(264)
+							.addComponent(registerBtn))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(80)
+							.addComponent(welcomeLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(142)
+							.addComponent(welcomeDescriptionLabel)))
+					.addContainerGap(81, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(73)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(26)
+					.addComponent(welcomeLabel)
+					.addGap(33)
+					.addComponent(welcomeDescriptionLabel)
+					.addGap(29)
 					.addComponent(loginBtn)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(16)
 					.addComponent(registerBtn)
-					.addContainerGap(106, Short.MAX_VALUE))
+					.addContainerGap(49, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
