@@ -21,7 +21,7 @@ import javax.swing.ListSelectionModel;
 public class ManageUsersPage extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * The administrator is able to access this page to edit, delete and add users
 	 */
 	public ManageUsersPage(JFrame frame, Admin adminUser) {
 		
@@ -76,6 +76,19 @@ public class ManageUsersPage extends JPanel {
 		});
 		
 		JButton editBtn = new JButton("Edit User");
+		editBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+			
+				String id = (String) userList.getSelectedValue();
+				id= id.substring(0,7);
+				EditUserPage panel = new EditUserPage(frame, Database.getUser(adminUser.getUserID()), Database.getUser(Integer.parseInt(id)));
+				frame.setContentPane(panel);
+				frame.setSize(580, 310);
+				frame.revalidate();	
+
+			}
+		});
 		
 		JButton addBtn = new JButton("Add New User");
 		addBtn.addMouseListener(new MouseAdapter() {
