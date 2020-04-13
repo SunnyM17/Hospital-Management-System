@@ -14,8 +14,16 @@ import javax.swing.JFrame;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class nurseSchedule extends JPanel {
+	
 	private JTextField idTextField;
 	private JTextField mondayTextField;
 	private JTextField tuesdayTextField;
@@ -23,186 +31,77 @@ public class nurseSchedule extends JPanel {
 	private JTextField thursdayTextField;
 	private JTextField fridayTextField;
 
-	/**
-	 * Create the panel.
-	 */
-	
-
-	public nurseSchedule() {
-		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+	public nurseSchedule(JFrame frame, Admin adminUser) {
+	setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
-		JPanel panel = new JPanel();
-		add(panel);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{137, 152, 0, 230, 0};
-		gbl_panel.rowHeights = new int[]{0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
+		JPanel panel_1 = new JPanel();
+		add(panel_1);
 		
-		JLabel lblNewLabel_4 = new JLabel("Nurse");
-		lblNewLabel_4.setFont(new Font("Cambria", Font.BOLD, 21));
-		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
-		gbc_lblNewLabel_4.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_4.gridx = 1;
-		gbc_lblNewLabel_4.gridy = 0;
-		panel.add(lblNewLabel_4, gbc_lblNewLabel_4);
+		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
 		
-		JLabel lblNewLabel = new JLabel("Schedule Builder");
-		lblNewLabel.setFont(new Font("Cambria", Font.BOLD, 21));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 2;
-		gbc_lblNewLabel.gridy = 0;
-		panel.add(lblNewLabel, gbc_lblNewLabel);
+		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.WHITE);
 		
-		JLabel lblNewLabel_1 = new JLabel("Enter ID of the nurse:");
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 2;
-		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.WHITE);
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 571, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel_1.createSequentialGroup()
+							.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)))
+					.addGap(347))
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel_2, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_3, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_4, GroupLayout.PREFERRED_SIZE, 307, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
 		
-		idTextField = new JTextField();
-		GridBagConstraints gbc_idTextField = new GridBagConstraints();
-		gbc_idTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_idTextField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_idTextField.gridx = 1;
-		gbc_idTextField.gridy = 2;
-		panel.add(idTextField, gbc_idTextField);
-		idTextField.setColumns(10);
+		JLabel lblNewLabel = new JLabel("Nurse Schedule Builder");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		
-		JLabel lblNewLabel_2 = new JLabel(" Enter the times in the");
-		lblNewLabel_2.setFont(new Font("Cambria", Font.BOLD | Font.ITALIC, 15));
-		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_2.gridx = 0;
-		gbc_lblNewLabel_2.gridy = 4;
-		panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("corresponding days");
-		lblNewLabel_3.setFont(new Font("Cambria", Font.BOLD | Font.ITALIC, 15));
-		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.anchor = GridBagConstraints.WEST;
-		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_3.gridx = 1;
-		gbc_lblNewLabel_3.gridy = 4;
-		panel.add(lblNewLabel_3, gbc_lblNewLabel_3);
-		
-		JLabel mondayLabel = new JLabel("Monday: ");
-		mondayLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		GridBagConstraints gbc_mondayLabel = new GridBagConstraints();
-		gbc_mondayLabel.anchor = GridBagConstraints.EAST;
-		gbc_mondayLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_mondayLabel.gridx = 0;
-		gbc_mondayLabel.gridy = 6;
-		panel.add(mondayLabel, gbc_mondayLabel);
-		
-		mondayTextField = new JTextField();
-		GridBagConstraints gbc_mondayTextField = new GridBagConstraints();
-		gbc_mondayTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_mondayTextField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_mondayTextField.gridx = 1;
-		gbc_mondayTextField.gridy = 6;
-		panel.add(mondayTextField, gbc_mondayTextField);
-		mondayTextField.setColumns(10);
-		
-		JLabel tuesdayLabel = new JLabel("Tuesday: ");
-		tuesdayLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		GridBagConstraints gbc_tuesdayLabel = new GridBagConstraints();
-		gbc_tuesdayLabel.anchor = GridBagConstraints.EAST;
-		gbc_tuesdayLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_tuesdayLabel.gridx = 0;
-		gbc_tuesdayLabel.gridy = 7;
-		panel.add(tuesdayLabel, gbc_tuesdayLabel);
-		
-		tuesdayTextField = new JTextField();
-		GridBagConstraints gbc_tuesdayTextField = new GridBagConstraints();
-		gbc_tuesdayTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_tuesdayTextField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_tuesdayTextField.gridx = 1;
-		gbc_tuesdayTextField.gridy = 7;
-		panel.add(tuesdayTextField, gbc_tuesdayTextField);
-		tuesdayTextField.setColumns(10);
-		
-		JLabel wednesdayLabel = new JLabel("Wednesday: ");
-		wednesdayLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		GridBagConstraints gbc_wednesdayLabel = new GridBagConstraints();
-		gbc_wednesdayLabel.anchor = GridBagConstraints.EAST;
-		gbc_wednesdayLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_wednesdayLabel.gridx = 0;
-		gbc_wednesdayLabel.gridy = 8;
-		panel.add(wednesdayLabel, gbc_wednesdayLabel);
-		
-		wednesdayTextField = new JTextField();
-		GridBagConstraints gbc_wednesdayTextField = new GridBagConstraints();
-		gbc_wednesdayTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_wednesdayTextField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_wednesdayTextField.gridx = 1;
-		gbc_wednesdayTextField.gridy = 8;
-		panel.add(wednesdayTextField, gbc_wednesdayTextField);
-		wednesdayTextField.setColumns(10);
-		
-		JLabel thursdayLabel = new JLabel("Thursday: ");
-		thursdayLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		GridBagConstraints gbc_thursdayLabel = new GridBagConstraints();
-		gbc_thursdayLabel.anchor = GridBagConstraints.EAST;
-		gbc_thursdayLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_thursdayLabel.gridx = 0;
-		gbc_thursdayLabel.gridy = 9;
-		panel.add(thursdayLabel, gbc_thursdayLabel);
-		
-		thursdayTextField = new JTextField();
-		GridBagConstraints gbc_thursdayTextField = new GridBagConstraints();
-		gbc_thursdayTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_thursdayTextField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_thursdayTextField.gridx = 1;
-		gbc_thursdayTextField.gridy = 9;
-		panel.add(thursdayTextField, gbc_thursdayTextField);
-		thursdayTextField.setColumns(10);
-		
-		JLabel fridayLabel = new JLabel("Friday: ");
-		fridayLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		GridBagConstraints gbc_fridayLabel = new GridBagConstraints();
-		gbc_fridayLabel.anchor = GridBagConstraints.EAST;
-		gbc_fridayLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_fridayLabel.gridx = 0;
-		gbc_fridayLabel.gridy = 10;
-		panel.add(fridayLabel, gbc_fridayLabel);
-		
-		fridayTextField = new JTextField();
-		GridBagConstraints gbc_fridayTextField = new GridBagConstraints();
-		gbc_fridayTextField.insets = new Insets(0, 0, 5, 5);
-		gbc_fridayTextField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_fridayTextField.gridx = 1;
-		gbc_fridayTextField.gridy = 10;
-		panel.add(fridayTextField, gbc_fridayTextField);
-		fridayTextField.setColumns(10);
-		
-		JButton backButton = new JButton("Back");
-		backButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent arg0) {
-				
-				
-			}
-			
-		});
-
-		GridBagConstraints gbc_backButton = new GridBagConstraints();
-		gbc_backButton.insets = new Insets(0, 0, 0, 5);
-		gbc_backButton.gridx = 1;
-		gbc_backButton.gridy = 12;
-		panel.add(backButton, gbc_backButton);
+		JButton homeBtn = new JButton("Home");
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+					.addContainerGap(204, Short.MAX_VALUE)
+					.addComponent(lblNewLabel)
+					.addGap(81)
+					.addComponent(homeBtn))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addComponent(homeBtn)
+					.addContainerGap(29, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+					.addContainerGap(20, Short.MAX_VALUE)
+					.addComponent(lblNewLabel)
+					.addContainerGap())
+		);
+		panel_2.setLayout(gl_panel_2);
 		
 		JButton doneButton = new JButton("Done");
 		doneButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				
 				FileSystem file = new FileSystem(idTextField.getText());
+				ArrayList<String> schedule = new ArrayList<String>();
 				file.writeToFile(file.getFile(), mondayTextField.getText());
 				file.writeToFile(file.getFile(), tuesdayTextField.getText());
 				file.writeToFile(file.getFile(), wednesdayTextField.getText());
@@ -212,12 +111,175 @@ public class nurseSchedule extends JPanel {
 				
 			}
 		});
-		GridBagConstraints gbc_doneButton = new GridBagConstraints();
-		gbc_doneButton.insets = new Insets(0, 0, 0, 5);
-		gbc_doneButton.gridx = 2;
-		gbc_doneButton.gridy = 12;
-		panel.add(doneButton, gbc_doneButton);
+		
+		JButton backButton = new JButton("Back");
+		backButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				AdminPage panel = new AdminPage(frame, adminUser);
+				frame.setContentPane(panel);
+				frame.resize(675,460);
+				frame.revalidate();
+			}
+		});
+		GroupLayout gl_panel_4 = new GroupLayout(panel_4);
+		gl_panel_4.setHorizontalGroup(
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_4.createSequentialGroup()
+					.addGap(57)
+					.addGroup(gl_panel_4.createParallelGroup(Alignment.TRAILING)
+						.addComponent(doneButton)
+						.addComponent(backButton))
+					.addContainerGap(57, Short.MAX_VALUE))
+		);
+		gl_panel_4.setVerticalGroup(
+			gl_panel_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel_4.createSequentialGroup()
+					.addContainerGap(89, Short.MAX_VALUE)
+					.addComponent(doneButton)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(backButton)
+					.addGap(144))
+		);
+		panel_4.setLayout(gl_panel_4);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel_3.add(panel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Enter ID of the nurse:");
+		
+		idTextField = new JTextField();
+		idTextField.setBackground(SystemColor.control);
+		idTextField.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel(" Enter the times in the");
+		lblNewLabel_2.setFont(new Font("Cambria", Font.BOLD | Font.ITALIC, 15));
+		
+		JLabel lblNewLabel_3 = new JLabel("corresponding days");
+		lblNewLabel_3.setFont(new Font("Cambria", Font.BOLD | Font.ITALIC, 15));
+		
+		JLabel mondayLabel = new JLabel("Monday: ");
+		mondayLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		mondayTextField = new JTextField();
+		mondayTextField.setBackground(SystemColor.control);
+		mondayTextField.setColumns(10);
+		
+		JLabel tuesdayLabel = new JLabel("Tuesday: ");
+		tuesdayLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		tuesdayTextField = new JTextField();
+		tuesdayTextField.setBackground(SystemColor.control);
+		tuesdayTextField.setColumns(10);
+		
+		JLabel wednesdayLabel = new JLabel("Wednesday: ");
+		wednesdayLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		wednesdayTextField = new JTextField();
+		wednesdayTextField.setBackground(SystemColor.control);
+		wednesdayTextField.setColumns(10);
+		
+		JLabel thursdayLabel = new JLabel("Thursday: ");
+		thursdayLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		thursdayTextField = new JTextField();
+		thursdayTextField.setBackground(SystemColor.control);
+		thursdayTextField.setColumns(10);
+		
+		JLabel fridayLabel = new JLabel("Friday: ");
+		fridayLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		fridayTextField = new JTextField();
+		fridayTextField.setBackground(SystemColor.control);
+		fridayTextField.setColumns(10);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(93)
+					.addComponent(mondayLabel)
+					.addGap(5)
+					.addComponent(mondayTextField, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(88)
+					.addComponent(tuesdayLabel)
+					.addGap(5)
+					.addComponent(tuesdayTextField, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(68)
+					.addComponent(wednesdayLabel)
+					.addGap(5)
+					.addComponent(wednesdayTextField, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(83)
+					.addComponent(thursdayLabel)
+					.addGap(5)
+					.addComponent(thursdayTextField, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(106)
+					.addComponent(fridayLabel)
+					.addGap(5)
+					.addComponent(fridayTextField, GroupLayout.PREFERRED_SIZE, 147, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(11)
+					.addComponent(lblNewLabel_2)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel_3)
+					.addGap(23))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(3)
+					.addComponent(lblNewLabel_1)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(idTextField, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+					.addContainerGap())
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(25)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_1)
+						.addComponent(idTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_3)
+						.addComponent(lblNewLabel_2))
+					.addGap(35)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(mondayLabel))
+						.addComponent(mondayTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(5)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(tuesdayLabel))
+						.addComponent(tuesdayTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(5)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(wednesdayLabel))
+						.addComponent(wednesdayTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(5)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(thursdayLabel))
+						.addComponent(thursdayTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(5)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(3)
+							.addComponent(fridayLabel))
+						.addComponent(fridayTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(64))
+		);
+		panel.setLayout(gl_panel);
+		panel_1.setLayout(gl_panel_1);
 
 	}
-
 }
+

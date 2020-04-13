@@ -96,8 +96,9 @@ public class AdminPage extends JPanel {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				nurseSchedule panel = new nurseSchedule();
+				nurseSchedule panel = new nurseSchedule(frame, adminUser);
 				frame.setContentPane(panel);
+				frame.resize(620, 450);
 				frame.revalidate();
 			}
 		});

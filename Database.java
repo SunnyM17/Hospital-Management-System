@@ -15,7 +15,7 @@ public class Database {
      * Change LOCATION string based on where you store the project locally
      * depending on absolute path of where you keep the database
      * **/
-    static final String LOCATION = "C:\\Users\\meetg\\eclipse-workspace\\Hospital\\src\\database";
+    static final String LOCATION = "C:\\Users\\Simran\\eclipse-workspace\\HospitalManagement\\database";
 
     /** Maps of all users **/
     private static final Map<Integer,Users> USERS = new HashMap<>();
@@ -133,13 +133,21 @@ public class Database {
     public static Patient getPatient(Integer userId){
         return PATIENTS.get(userId);
     }
-
+    
+    public static Assistant getAssistant(Integer userId){
+        return ASSISTANTS.get(userId);
+    }
+   
     public static boolean userExists(Integer userId){
         return USERS.containsKey(userId);
     }
     
     public static Map getAllUsers() {
     	return USERS;
+    }
+    
+    public static Map getAllDoctors() {
+    	return DOCTORS;
     }
 	
     public static int getNumOfUsers(int role) {

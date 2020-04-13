@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
 /**
  * Represents hospital's information
  */
@@ -46,6 +48,22 @@ public class Hospital {
 		}
 		
 		return departmentArr;
+	}
+	
+	
+	public static String[] getListOfUsers(Map<Integer, Users> users) {
+		
+		String[] userBasicInfo = new String[users.size()];
+		int j =0;
+		
+		for(Integer i : users.keySet()) {
+			userBasicInfo[j] = i + "       " + users.get(i).getFirstName() + " " + users.get(i).getLastName();
+			j++;
+		}
+		// sorts the array in ascending order
+		Arrays.sort(userBasicInfo);
+		
+		return userBasicInfo;
 	}
 	
 	

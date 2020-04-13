@@ -19,8 +19,6 @@ public class AssistantPage extends JPanel {
 	 * Create the panel.
 	 */
 	public AssistantPage(JFrame frame, Users assistantUser) {
-		
-
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.WHITE);
 		
@@ -29,17 +27,18 @@ public class AssistantPage extends JPanel {
 		
 		JPanel panel3 = new JPanel();
 		panel3.setBackground(Color.WHITE);
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(panel, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(panel3, GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+							.addComponent(panel3, GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
 							.addGap(18)
-							.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 413, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -49,12 +48,12 @@ public class AssistantPage extends JPanel {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel3, GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
-						.addComponent(panel2, GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE))
+						.addComponent(panel3, GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+						.addComponent(panel2, GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
-		JButton appointmentsBtn = new JButton(" Appointments");
+		JButton appointmentsBtn = new JButton("Manage Appointments");
 		appointmentsBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
@@ -62,7 +61,17 @@ public class AssistantPage extends JPanel {
 		});
 		appointmentsBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton statsBtn = new JButton("");
+		
+		JButton statsBtn = new JButton("View Doctor's Schedule");
+		statsBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				SelectSchedule panel = new SelectSchedule(frame, Database.getUser(assistantUser.getUserID()), Database.getAllDoctors());
+				frame.setContentPane(panel);
+				frame.revalidate();
+			}
+			
+		});
 		statsBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton addDepartmentBtn = new JButton("Schedule Lab Test");
@@ -74,7 +83,7 @@ public class AssistantPage extends JPanel {
 					.addContainerGap()
 					.addGroup(gl_panel3.createParallelGroup(Alignment.LEADING)
 						.addComponent(appointmentsBtn, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE)
-						.addComponent(statsBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+						.addComponent(statsBtn, GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE)
 						.addComponent(addDepartmentBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
 					.addContainerGap())
 		);
@@ -84,10 +93,10 @@ public class AssistantPage extends JPanel {
 					.addGap(58)
 					.addComponent(appointmentsBtn)
 					.addGap(29)
-					.addComponent(statsBtn)
-					.addGap(27)
+					.addComponent(statsBtn, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+					.addGap(28)
 					.addComponent(addDepartmentBtn)
-					.addContainerGap(150, Short.MAX_VALUE))
+					.addContainerGap(79, Short.MAX_VALUE))
 		);
 		panel3.setLayout(gl_panel3);
 		
@@ -98,33 +107,39 @@ public class AssistantPage extends JPanel {
 		nameLbL.setText("Welcome " + assistantUser.getFirstName() + " " +  assistantUser.getLastName() + " !");
 		
 		JLayeredPane layeredPane = new JLayeredPane();
+		
+		JButton btnNewButton = new JButton("Update My Information");
 		GroupLayout gl_panel2 = new GroupLayout(panel2);
 		gl_panel2.setHorizontalGroup(
 			gl_panel2.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel2.createSequentialGroup()
+				.addGroup(Alignment.LEADING, gl_panel2.createSequentialGroup()
 					.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
 						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel, Alignment.TRAILING))
-					.addContainerGap(423, Short.MAX_VALUE))
+					.addContainerGap(412, Short.MAX_VALUE))
 				.addGroup(gl_panel2.createSequentialGroup()
-					.addContainerGap(54, Short.MAX_VALUE)
-					.addComponent(nameLbL)
-					.addGap(132))
+					.addContainerGap(68, Short.MAX_VALUE)
+					.addGroup(gl_panel2.createParallelGroup(Alignment.TRAILING)
+						.addComponent(nameLbL)
+						.addComponent(btnNewButton))
+					.addGap(107))
 		);
 		gl_panel2.setVerticalGroup(
 			gl_panel2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel2.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(111)
-					.addComponent(lblNewLabel)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(24)
 					.addComponent(nameLbL)
-					.addContainerGap(183, Short.MAX_VALUE))
+					.addGap(29)
+					.addComponent(btnNewButton)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel)
+					.addContainerGap(138, Short.MAX_VALUE))
 		);
 		panel2.setLayout(gl_panel2);
 		
-		JLabel hospitalNameLbl = new JLabel("Hospital Name");
+		JLabel hospitalNameLbl = new JLabel("Welcome to AHS Hospital Management System");
 		hospitalNameLbl.setFont(new Font("Tahoma", Font.BOLD, 19));
 		
 		JButton logoutBtn = new JButton("Logout");
@@ -135,26 +150,25 @@ public class AssistantPage extends JPanel {
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(254, Short.MAX_VALUE)
+					.addGap(66)
 					.addComponent(hospitalNameLbl)
-					.addGap(147)
+					.addPreferredGap(ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
 					.addComponent(logoutBtn))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(logoutBtn)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(hospitalNameLbl))
-						.addComponent(logoutBtn))
+							.addComponent(hospitalNameLbl)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);
-		
-
 
 	}
 
 }
+
