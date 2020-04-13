@@ -142,5 +142,22 @@ public class Database {
     	return USERS;
     }
 	
+    public static int getNumOfUsers(int role) {
+    	switch(role) {
+    	case 1:
+    		return ADMINS.size();
+    	case 2:
+    		return DOCTORS.size();
+    	case 3:
+    		return PATIENTS.size();
+    	case 4:
+    		return ASSISTANTS.size();
+    	case 5:
+    		return NURSES.size();
+    	default:
+    		return -1;
+    	}
+    }
+	
 }
 
