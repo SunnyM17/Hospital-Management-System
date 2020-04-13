@@ -70,6 +70,7 @@ public class FileSystem {
 		pw.println(user.getEmail());
 		pw.println(user.getAddress());
 		pw.print(user.getPhoneNum());
+		pw.println();
 		pw.close();
 		fw.close();
 		} catch(IOException e) {
@@ -85,12 +86,9 @@ public class FileSystem {
 	 * @param info	String that needs to be written.
 	 */
 	public void writeToFile(File file, String info) {
-		/* Writes a string to the file 
-		  */
 		try {
 			FileWriter fw = new FileWriter(file, true);
 			PrintWriter pw = new PrintWriter(fw);
-			pw.println();
 			pw.println(info);
 			pw.close();
 			fw.close();
