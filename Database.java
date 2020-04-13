@@ -15,7 +15,7 @@ public class Database {
      * Change LOCATION string based on where you store the project locally
      * depending on absolute path of where you keep the database
      * **/
-    static final String LOCATION = "C:\\Users\\carme\\Desktop\\SENG 300\\Group Project\\SENG 300 - Github Repo\\Hospital-Management-System\\database";
+    static final String LOCATION = "C:\\Users\\jamen\\OneDrive\\Documents\\GitHub\\UHMSV5\\Hospital-Management-System\\database";
 
     /** Maps of all users **/
     private static final Map<Integer,Users> USERS = new HashMap<>();
@@ -23,7 +23,6 @@ public class Database {
     private static final Map<Integer,Doctor> DOCTORS = new HashMap<>();
     private static final Map<Integer,Assistant> ASSISTANTS = new HashMap<>();
     private static final Map<Integer,Patient> PATIENTS = new HashMap<>();
-    //TODO: need to add nurses
     private static final Map<Integer,Nurse> NURSES = new HashMap<>();
 
 
@@ -87,6 +86,12 @@ public class Database {
                 Assistant assistant = new Assistant();
                 ASSISTANTS.put(integerId,assistant);
                 users = assistant;
+            }
+            else if(id.startsWith("5")) {
+            	Nurse nurse = new Nurse();
+            	NURSES.put(integerId, nurse);
+            	users = nurse;
+            	
             }
 
             

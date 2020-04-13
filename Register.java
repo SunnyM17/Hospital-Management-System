@@ -83,7 +83,7 @@ public class Register extends JPanel {
 		
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Admin", "Doctor", "Patient", "Assistant"};
+			String[] values = new String[] {"Admin", "Doctor", "Patient", "Assistant", "Nurse"};
 			public int getSize() {
 				return values.length;
 			}
@@ -244,7 +244,7 @@ public class Register extends JPanel {
 		
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Admin", "Doctor", "Patient", "Assistant"};
+			String[] values = new String[] {"Admin", "Doctor", "Patient", "Assistant", "Nurse"};
 			public int getSize() {
 				return values.length;
 			}
