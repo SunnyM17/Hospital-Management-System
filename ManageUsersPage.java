@@ -35,11 +35,11 @@ public class ManageUsersPage extends JPanel {
 		panel.setBackground(Color.WHITE);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+						.addComponent(panel2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
 						.addComponent(panel, Alignment.TRAILING, 0, 0, Short.MAX_VALUE))
 					.addContainerGap())
 		);
@@ -49,8 +49,8 @@ public class ManageUsersPage extends JPanel {
 					.addContainerGap()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addContainerGap())
+					.addComponent(panel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(27, Short.MAX_VALUE))
 		);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -79,7 +79,13 @@ public class ManageUsersPage extends JPanel {
 		editBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+			
+				String id = (String) userList.getSelectedValue();
+				id= id.substring(0,7);
+				UpdateInfo panel = new UpdateInfo(frame, Database.getUser(adminUser.getUserID()), Database.getUser(Integer.parseInt(id)));
+				frame.setContentPane(panel);
+				frame.setSize(640, 470);
+				frame.revalidate();	
 
 			}
 		});
