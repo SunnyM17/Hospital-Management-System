@@ -34,16 +34,17 @@ public class AdminPage extends JPanel {
 		panel3.setBackground(Color.WHITE);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(panel3, GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+							.addComponent(panel3, GroupLayout.PREFERRED_SIZE, 205, Short.MAX_VALUE)
 							.addGap(18)
-							.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
+							.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 403, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGap(32))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -52,8 +53,8 @@ public class AdminPage extends JPanel {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel3, GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
-						.addComponent(panel2, GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE))
+						.addComponent(panel2, GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+						.addComponent(panel3, GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
@@ -70,6 +71,14 @@ public class AdminPage extends JPanel {
 		manageEmployeesBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton statsBtn = new JButton("Generate Statistics");
+		statsBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				GenerateStatsPage panel = new GenerateStatsPage(frame, adminUser);
+				frame.setContentPane(panel);
+				frame.revalidate();
+			}
+		});
 		statsBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton addDepartmentBtn = new JButton("Add Department");
@@ -82,15 +91,19 @@ public class AdminPage extends JPanel {
 			}
 		});
 		addDepartmentBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JButton btnNewButton = new JButton("Manage Nurse's Schedule");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		GroupLayout gl_panel3 = new GroupLayout(panel3);
 		gl_panel3.setHorizontalGroup(
 			gl_panel3.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel3.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel3.createParallelGroup(Alignment.LEADING)
-						.addComponent(manageEmployeesBtn, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE)
-						.addComponent(statsBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-						.addComponent(addDepartmentBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+						.addComponent(manageEmployeesBtn, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 154, Short.MAX_VALUE)
+						.addComponent(statsBtn, GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+						.addComponent(addDepartmentBtn, GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+						.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panel3.setVerticalGroup(
@@ -102,7 +115,9 @@ public class AdminPage extends JPanel {
 					.addComponent(statsBtn)
 					.addGap(27)
 					.addComponent(addDepartmentBtn)
-					.addContainerGap(150, Short.MAX_VALUE))
+					.addGap(26)
+					.addComponent(btnNewButton)
+					.addContainerGap(50, Short.MAX_VALUE))
 		);
 		panel3.setLayout(gl_panel3);
 		
@@ -139,7 +154,7 @@ public class AdminPage extends JPanel {
 		);
 		panel2.setLayout(gl_panel2);
 		
-		JLabel hospitalNameLbl = new JLabel("Hospital Name");
+		JLabel hospitalNameLbl = new JLabel("Welcome to AHS Hospital Management System");
 		hospitalNameLbl.setFont(new Font("Tahoma", Font.BOLD, 19));
 		
 		JButton logoutBtn = new JButton("Logout");
@@ -159,19 +174,19 @@ public class AdminPage extends JPanel {
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(254, Short.MAX_VALUE)
+					.addContainerGap(68, Short.MAX_VALUE)
 					.addComponent(hospitalNameLbl)
-					.addGap(147)
+					.addGap(26)
 					.addComponent(logoutBtn))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(logoutBtn)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(hospitalNameLbl))
-						.addComponent(logoutBtn))
+							.addComponent(hospitalNameLbl)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);

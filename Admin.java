@@ -14,7 +14,6 @@ public class Admin extends Users
     	
     }
 
-
     /**
      * Gets a list of all the users from the database and arranges
      * their id and name into a string and stores them into an array.
@@ -61,6 +60,27 @@ public class Admin extends Users
 	 */
 	public boolean addDepartment(String name) {
 		return Hospital.addNewDepartment(name);
+	}
+	
+	/**
+	 * It gets how much patients use each department.
+	 * 
+	 * @return	the total number of patients in each department
+	 */
+	public Object[][] getTrafficForDepartments(){
+		
+		Object[][] data = new Object[Hospital.getArrDepartments().length][Hospital.getArrDepartments().length];
+		String[] departments = Hospital.getArrDepartments();
+		
+		for(int i = 0; i< departments.length; i++) {
+			data[i][0] = departments[i];
+		}
+		
+		for(int i = 0; i< departments.length; i++) {
+			data[i][1] = 2;
+		}
+		
+		return data;	
 	}
 	
 }
