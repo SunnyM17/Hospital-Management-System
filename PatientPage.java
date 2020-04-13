@@ -104,10 +104,11 @@ public class PatientPage extends JPanel {
 				/* if file chosen */
 				if(returnValue == JFileChooser.APPROVE_OPTION) {
 					try {
-						/* popup JFileChooser, gets the PDF and its desintation */
+						/* popup JFileChooser, gets the PDF and its destintation */
 						pdfFile = uploadFileChooser.getSelectedFile();
 						System.out.println(pdfFile);
-						/* Set the destination path of where the referral letter should be stored*/
+						/* Set the destination path of where the referral letter should be stored 
+						 * CHANGE destinationPath TO SAVE REFERRAL TO SPECIFIC DIRECTORY*/
 						String destinationPath = "C:\\Users\\carme\\Desktop\\dest\\";
 						File dest = new File(destinationPath+String.valueOf(patientUser.getUserID())+"_ref.pdf");
 						Files.copy(pdfFile.toPath(), dest.toPath());
