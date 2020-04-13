@@ -1,10 +1,16 @@
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -12,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PatientPage extends JPanel {
 
@@ -72,35 +80,77 @@ public class PatientPage extends JPanel {
 		});
 		cancelAppointmentBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton addDepartmentBtn = new JButton("Add Department");
-		addDepartmentBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				System.out.println("button pressed");
+		/* Text shows up if you successfully upload a file */
+		JLabel uploadLbl = new JLabel("File Successfully Uploaded");
+		uploadLbl.setHorizontalAlignment(SwingConstants.CENTER);
+		uploadLbl.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		uploadLbl.setVisible(false);
+		
+		/* button for patient to upload referral letter by doctor or physician.
+		 * doctor's assistant should be able to access and view file once uploaded
+		 */
+		JButton uploadRefBtn = new JButton("Upload Referral Letter");
+		uploadRefBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Upload Referral button pressed");
+				File pdfFile = new File("");
+				String startingDir = "C:\\";
+				/* File chooser will open dialog with user's C drive as default */
+				final JFileChooser uploadFileChooser;
+				uploadFileChooser = new JFileChooser(startingDir);
+				
+				int returnValue = uploadFileChooser.showOpenDialog(null);
+				
+				/* if file chosen */
+				if(returnValue == JFileChooser.APPROVE_OPTION) {
+					try {
+						/* popup JFileChooser, gets the PDF and its desintation */
+						pdfFile = uploadFileChooser.getSelectedFile();
+						System.out.println(pdfFile);
+						/* Set the destination path of where the referral letter should be stored*/
+						String destinationPath = "C:\\Users\\carme\\Desktop\\dest\\";
+						File dest = new File(destinationPath+String.valueOf(patientUser.getUserID())+"_ref.pdf");
+						Files.copy(pdfFile.toPath(), dest.toPath());
+						uploadLbl.setVisible(true);
+						
+					} catch(Exception ioe){
+						ioe.printStackTrace();
+						uploadLbl.setText("Error uploading file");
+					}
+				} else {
+					System.out.println("No file chosen");
+				}
+				
 			}
 		});
-		addDepartmentBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		uploadRefBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+
+		
 		GroupLayout gl_panel3 = new GroupLayout(panel3);
 		gl_panel3.setHorizontalGroup(
 			gl_panel3.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel3.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel3.createParallelGroup(Alignment.LEADING)
-						.addComponent(scheduleAppointmentBtn, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE)
-						.addComponent(cancelAppointmentBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-						.addComponent(addDepartmentBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+						.addComponent(scheduleAppointmentBtn, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 202, Short.MAX_VALUE)
+						.addComponent(cancelAppointmentBtn, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+						.addComponent(uploadRefBtn, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+						.addComponent(uploadLbl, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panel3.setVerticalGroup(
 			gl_panel3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel3.createSequentialGroup()
-					.addGap(58)
+					.addGap(25)
 					.addComponent(scheduleAppointmentBtn)
 					.addGap(29)
 					.addComponent(cancelAppointmentBtn)
 					.addGap(27)
-					.addComponent(addDepartmentBtn)
-					.addContainerGap(150, Short.MAX_VALUE))
+					.addComponent(uploadRefBtn)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(uploadLbl)
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		panel3.setLayout(gl_panel3);
 		
