@@ -79,13 +79,7 @@ public class ManageUsersPage extends JPanel {
 		editBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-			
-				String id = (String) userList.getSelectedValue();
-				id= id.substring(0,7);
-				EditUserPage panel = new EditUserPage(frame, Database.getUser(adminUser.getUserID()), Database.getUser(Integer.parseInt(id)));
-				frame.setContentPane(panel);
-				frame.setSize(580, 310);
-				frame.revalidate();	
+				
 
 			}
 		});

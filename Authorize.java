@@ -68,6 +68,9 @@ public class Authorize {
 			else if(role == 3) 
 				userID = (int) (Math.random() * (5000000 - 4000001) + 4000000);
 			
+			//Nurse
+			else if (role == 4)
+				userID =(int) (Math.random() * (6000000 - 5000001) + 5000000);
 			// Invalid Role
 			else
 				userID = -1;	
