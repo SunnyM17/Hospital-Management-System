@@ -104,7 +104,7 @@ public class PatientPage extends JPanel {
 				/* if file chosen */
 				if(returnValue == JFileChooser.APPROVE_OPTION) {
 					try {
-						/* popup JFileChooser, gets the PDF and its destintation */
+						/* popup JFileChooser, gets the PDF and its destination */
 						pdfFile = uploadFileChooser.getSelectedFile();
 						System.out.println(pdfFile);
 						/* Set the destination path of where the referral letter should be stored 
