@@ -93,6 +93,14 @@ public class AdminPage extends JPanel {
 		addDepartmentBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		JButton btnNewButton = new JButton("Manage Nurse's Schedule");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				nurseSchedule panel = new nurseSchedule();
+				frame.setContentPane(panel);
+				frame.revalidate();
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		GroupLayout gl_panel3 = new GroupLayout(panel3);
 		gl_panel3.setHorizontalGroup(

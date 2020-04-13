@@ -15,7 +15,7 @@ public class Database {
      * Change LOCATION string based on where you store the project locally
      * depending on absolute path of where you keep the database
      * **/
-    static final String LOCATION = "C:\\Users\\jamen\\OneDrive\\Documents\\GitHub\\UHMSV5\\Hospital-Management-System\\database";
+    static final String LOCATION = "C:\\Users\\meetg\\eclipse-workspace\\Hospital\\src\\database";
 
     /** Maps of all users **/
     private static final Map<Integer,Users> USERS = new HashMap<>();
