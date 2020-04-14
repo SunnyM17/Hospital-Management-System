@@ -18,8 +18,10 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class PatientPage extends JPanel {
+	private JTextField doctorIDField;
 
 	/**
 	 * JPanel to display GUI that patient will see when they log in to the system.
@@ -176,22 +178,45 @@ public class PatientPage extends JPanel {
 			}
 		});
 		updateInfoBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		JLabel lblNewLabel_1 = new JLabel("Enter your doctor ID: ");
+		
+		doctorIDField = new JTextField();
+		doctorIDField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Done");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				FileSystem file = new FileSystem(doctorIDField.getText());
+				file.writeToFile(file.getFile(), doctorIDField.getText());
+				Database.load(file.getFile());
+			}
+		});
 		GroupLayout gl_panel2 = new GroupLayout(panel2);
 		gl_panel2.setHorizontalGroup(
 			gl_panel2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel2.createSequentialGroup()
 					.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
-						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel, Alignment.TRAILING))
-					.addGap(98))
-				.addGroup(Alignment.LEADING, gl_panel2.createSequentialGroup()
-					.addGap(111)
-					.addComponent(updateInfoBtn, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(111, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_panel2.createSequentialGroup()
-					.addGap(93)
-					.addComponent(nameLbL)
+						.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
+							.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNewLabel, Alignment.TRAILING))
+						.addGroup(gl_panel2.createSequentialGroup()
+							.addGap(93)
+							.addComponent(nameLbL)))
 					.addContainerGap(93, Short.MAX_VALUE))
+				.addGroup(gl_panel2.createSequentialGroup()
+					.addContainerGap(116, Short.MAX_VALUE)
+					.addComponent(updateInfoBtn, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+					.addGap(106))
+				.addGroup(Alignment.LEADING, gl_panel2.createSequentialGroup()
+					.addGap(72)
+					.addComponent(lblNewLabel_1)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(doctorIDField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton)
+					.addContainerGap(32, Short.MAX_VALUE))
 		);
 		gl_panel2.setVerticalGroup(
 			gl_panel2.createParallelGroup(Alignment.LEADING)
@@ -200,11 +225,16 @@ public class PatientPage extends JPanel {
 					.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(10)
 					.addComponent(nameLbL)
-					.addGap(81)
+					.addGap(52)
+					.addGroup(gl_panel2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_1)
+						.addComponent(doctorIDField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnNewButton))
+					.addGap(13)
 					.addComponent(lblNewLabel)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addPreferredGap(ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
 					.addComponent(updateInfoBtn, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(53, Short.MAX_VALUE))
+					.addGap(29))
 		);
 		panel2.setLayout(gl_panel2);
 		
