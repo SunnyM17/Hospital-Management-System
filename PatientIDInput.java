@@ -10,12 +10,15 @@ import javax.swing.JFrame;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
 public class PatientIDInput extends JPanel {
 	private JTextField textField;
 
 	/**
-	 * Creates the panel
+	 * Creates the panel for user to input ID number of patient
+	 * @param frame allows for sub-frames of other necessary frames to use the same JFrame
+	 * @param user makes sure that the frame is being user for the correct User only
 	 */
 	public PatientIDInput(JFrame frame, Doctor user) {
 		
@@ -30,54 +33,84 @@ public class PatientIDInput extends JPanel {
 		textField = new JTextField();
 		textField.setColumns(10);
 		
+		
+		JLabel errorLbl = new JLabel("Try again. Patient number does not exist");
+		errorLbl.setForeground(Color.RED);
+		errorLbl.setVisible(false);
+		
 		/**
 		 * When this button is clicked, because of the MouseListener, 
 		 * The Doctor is taken to the next frame where he can see the patient's file
-		 *
+		 * If the value entered is not a number, a NumberFormatException is thrown
 		 */
 		
 		JButton btnNewButton = new JButton("See Record");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				int userID = Integer.parseInt(textField.getText());
-				PatientRecordPeak patientRec = new PatientRecordPeak(userID, frame, user);
-				frame.setContentPane(patientRec);
-				frame.setSize(750, 432);
-				frame.revalidate();
+				try {
+					int userID = Integer.parseInt(textField.getText());
+					if (Database.getAllPatients().containsKey(userID)) {
+						PatientRecordPeak patientRec = new PatientRecordPeak(userID, frame, user);
+						frame.setContentPane(patientRec);
+						frame.revalidate();
+					} else {
+						errorLbl.setVisible(true);
+						System.out.println("Patient does not exist");
+					}
+				} catch (NumberFormatException nfe) {
+					errorLbl.setText("Please enter  number");
+					errorLbl.setVisible(true);
+					System.out.println("Number format exception");
+					nfe.printStackTrace();
+				}
 				
 			}
 		});
+		
+		/* Returns back to doctor's home page */
+		JButton backBtn = new JButton("Back to Home");
+		backBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				DoctorPage drPanel = new DoctorPage(frame, user);
+				frame.setContentPane(drPanel);
+				frame.revalidate();	
+			}
+		});
+		
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(81)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(25)
-							.addComponent(lblNewLabel)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(167)
-							.addComponent(btnNewButton)))
-					.addContainerGap(62, Short.MAX_VALUE))
+						.addComponent(lblNewLabel)
+						.addComponent(backBtn, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton)
+						.addComponent(errorLbl)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(111, Short.MAX_VALUE))
 		);
-		
-		
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(140)
+					.addContainerGap(126, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel)
 						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(27)
+					.addComponent(errorLbl)
 					.addGap(18)
-					.addComponent(btnNewButton)
-					.addContainerGap(99, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnNewButton)
+						.addComponent(backBtn))
+					.addGap(86))
 		);
 		setLayout(groupLayout);
 
 	}
-
 }

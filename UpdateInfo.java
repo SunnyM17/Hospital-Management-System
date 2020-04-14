@@ -2,8 +2,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,6 +27,9 @@ public class UpdateInfo extends JPanel {
 	 * Panel for patients to update their personal information.
 	 * When user enters this panel, textfields are filled in with their current personal info
 	 * User can update the textfield and set specific personal info
+	 * @param frame allows for sub-frames of other necessary frames to use the same JFrame
+	 * @param currentUser refers to the user's information prior to updating their information
+	 * @param editedUser refers to the user's information after updating their information
 	 */
 	public UpdateInfo(JFrame frame, Users currentUser, Users editedUser) {
 		
@@ -118,19 +119,25 @@ public class UpdateInfo extends JPanel {
 					if(role == 1) {
 						ManageUsersPage panel = new ManageUsersPage(frame, Database.getAdmin(currentUser.getUserID()));
 						frame.setContentPane(panel);
-						frame.setSize(700, 450);
+						frame.setSize(675, 432);
+						frame.revalidate();	
+					}
+					else if(role == 2) {
+						DoctorPage updatedDoctorPage = new DoctorPage(frame, Database.getDoctor(editedUser.getUserID()));
+						frame.setContentPane(updatedDoctorPage);
+						frame.setSize(675, 432);
 						frame.revalidate();	
 					}
 					else if(role == 3) {
 						PatientPage updatedPatientPage = new PatientPage(frame, Database.getPatient(editedUser.getUserID()));
 						frame.setContentPane(updatedPatientPage);
-						frame.setSize(657, 432);
+						frame.setSize(675, 432);
 						frame.revalidate();	
 					}
 					else if(role == 4) {
 						AssistantPage updatedPatientPage = new AssistantPage(frame, Database.getPatient(editedUser.getUserID()));
 						frame.setContentPane(updatedPatientPage);
-						frame.setSize(657, 432);
+						frame.setSize(675, 432);
 						frame.revalidate();
 					}
 					

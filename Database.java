@@ -15,8 +15,8 @@ public class Database {
      * Change LOCATION string based on where you store the project locally
      * depending on absolute path of where you keep the database
      * **/
-	static final String LOCATION = "C:\\Users\\Simran\\eclipse-workspace\\HospitalManagement\\database";
-    //static final String LOCATION = "C:\\Users\\carme\\Desktop\\SENG 300\\Group Project\\SENG 300 - Github Repo\\Hospital-Management-System\\database";
+	//static final String LOCATION = "C:\\Users\\Simran\\eclipse-workspace\\HospitalManagement\\database";
+    static final String LOCATION = "C:\\Users\\carme\\Desktop\\SENG 300\\Group Project\\SENG 300 - Github Repo\\Hospital-Management-System\\database";
     /** Maps of all users **/
     private static final Map<Integer,Users> USERS = new HashMap<>();
     private static final Map<Integer,Admin> ADMINS = new HashMap<>();
@@ -168,6 +168,10 @@ public class Database {
     
     public static Map getAllNurses() {
     	return NURSES;
+    }
+    
+    public static Map getAllPatients() {
+    	return PATIENTS;
     }
 
     /* returns the size of each map to count how many users are in the system */
