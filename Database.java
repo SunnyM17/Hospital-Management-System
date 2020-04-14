@@ -16,7 +16,7 @@ public class Database {
      * depending on absolute path of where you keep the database
      * **/
     static final String LOCATION = "C:\\Users\\Simran\\eclipse-workspace\\HospitalManagement\\database";
-
+//    static final String LOCATION = "C:\\Users\\carme\\Desktop\\SENG 300\\Group Project\\SENG 300 - Github Repo\\Hospital-Management-System\\database";
     /** Maps of all users **/
     private static final Map<Integer,Users> USERS = new HashMap<>();
     private static final Map<Integer,Admin> ADMINS = new HashMap<>();
@@ -60,7 +60,7 @@ public class Database {
         System.out.println("All Loaded");
     }
 
-
+    /* loads database from directory into respective maps */
     public static void load(File userFile){
         try {
 
@@ -122,14 +122,17 @@ public class Database {
 
     }
 
+    /* returns user ID from the general USERS map */
     public static Users getUser(Integer userId){
         return USERS.get(userId);
     }
-    
+
+    /* returns ID of admin from ADMINS map */
     public static Admin getAdmin(Integer userId){
         return ADMINS.get(userId);
     }
-    
+
+    /* returns ID of patient from PATIENTS map */
     public static Patient getPatient(Integer userId){
         return PATIENTS.get(userId);
     }
@@ -137,19 +140,29 @@ public class Database {
     public static Assistant getAssistant(Integer userId){
         return ASSISTANTS.get(userId);
     }
-   
+
+    /* returns ID of nurse from NURSE map */
+    public static Nurse getNurse(Integer userId){
+        return NURSES.get(userId);
+    }
+
+    /* returns true if the user ID exists in the USER map
+     * should be true if user was loaded into the map */
     public static boolean userExists(Integer userId){
         return USERS.containsKey(userId);
     }
-    
+
+    /* returns a map of all users */
     public static Map getAllUsers() {
     	return USERS;
     }
-    
+
+
     public static Map getAllDoctors() {
     	return DOCTORS;
     }
-	
+
+    /* returns the size of each map to count how many users are in the system */
     public static int getNumOfUsers(int role) {
     	switch(role) {
     	case 1:

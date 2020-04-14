@@ -55,7 +55,7 @@ public class Main {
 			public void mousePressed(MouseEvent e) {
 				Login panel = new Login(frame, auth);
 				frame.setContentPane(panel);
-				frame.setSize(499, 303);
+				frame.setSize(639, 309);
 				frame.revalidate();
 				
 			}

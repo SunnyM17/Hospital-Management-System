@@ -77,6 +77,15 @@ public class Login extends JPanel {
 					/* ID starts with 3, go to assistant GUI */
 					else if(value == 4 && temp) {
 						System.out.println("assistant login");
+					} else if(value == 5 && temp) {
+						System.out.println("nurse login");
+						NursePage nursePanel = new NursePage(frame, Database.getNurse(id));
+						frame.setContentPane(nursePanel);
+						frame.setSize(750, 450);
+						frame.revalidate();	
+					} else {
+						/* in the case that ID does not start with one of the above values */
+						System.out.println("Cannot identify login type");
 					}
 				/* catch exception if username contains more than just numbers */
 				} catch(Exception loginEx) {
@@ -95,8 +104,8 @@ public class Login extends JPanel {
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(57, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(161)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(passLbl)
 						.addComponent(idLbl))
@@ -107,12 +116,12 @@ public class Login extends JPanel {
 						.addComponent(loginLbl)
 						.addComponent(errorLbl, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(idTxtField, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
-					.addGap(109))
+					.addContainerGap(194, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
+					.addGap(26)
 					.addComponent(loginLbl)
 					.addGap(53)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -122,11 +131,11 @@ public class Login extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(passLbl)
 						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
 					.addComponent(errorLbl)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(doneBtn)
-					.addGap(46))
+					.addGap(36))
 		);
 		setLayout(groupLayout);
 

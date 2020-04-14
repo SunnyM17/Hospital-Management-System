@@ -4,13 +4,11 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -168,7 +166,10 @@ public class PatientPage extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				System.out.println("Update info button pressed");
-				UpdateInfo updateInfoPatient = new UpdateInfo(frame, patientUser);
+				
+				/* opens up GUI that allows patient to update their page */
+				//UpdateInfo updateInfoPatient = new UpdateInfo(frame, patientUser);
+				UpdateInfo updateInfoPatient = new UpdateInfo(frame, Database.getUser(patientUser.getUserID()), Database.getUser(patientUser.getUserID()));
 				frame.setContentPane(updateInfoPatient);
 				frame.setSize(657, 432);
 				frame.revalidate();	
