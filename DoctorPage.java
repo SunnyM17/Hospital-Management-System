@@ -91,7 +91,7 @@ public class DoctorPage extends JPanel {
 			public void mousePressed(MouseEvent arg0) {
 				ReviewSchedule RS = new ReviewSchedule(frame, doctorUser, Database.getUser(doctorUser.getUserID()));
 				frame.setContentPane(RS);
-				frame.setSize(750, 432);
+				frame.setSize(620, 400);
 				frame.revalidate();
 				
 			}
