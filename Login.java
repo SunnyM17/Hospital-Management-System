@@ -65,10 +65,10 @@ public class Login extends JPanel {
 					/* ID starts with 2, go to doctor GUI */
 					else if(value == 2 && temp) {
 						System.out.println("doctor login");
-						//DoctorPage drPanel = new DoctorPage(frame, Database.getDoctor(id));
-						//frame.setContentPane(drPanel);
-						//frame.setSize(657, 432);
-						//frame.revalidate();	
+						DoctorPage drPanel = new DoctorPage(frame, Database.getDoctor(id));
+						frame.setContentPane(drPanel);
+						frame.setSize(657, 432);
+						frame.revalidate();	
 					}
 					/* ID starts with 3, go to patient GUI */
 					else if(value == 3 && temp) {
