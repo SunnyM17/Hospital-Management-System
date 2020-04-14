@@ -24,7 +24,8 @@ public class GenerateStatsPage extends JPanel {
 	private JTable trafficTbl;
 
 	/**
-	 * Create the panel.
+	 * This panel displays the statistics related to the users, upon
+	 * the administrator's request.
 	 */
 	public GenerateStatsPage(JFrame frame, Admin adminUser) {
 			
@@ -62,11 +63,10 @@ public class GenerateStatsPage extends JPanel {
 			doneBtn.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mousePressed(MouseEvent e) {
-					
+					// Displays the administrator's home page
 					AdminPage panel = new AdminPage(frame, adminUser);
 					frame.setContentPane(panel);
-					frame.revalidate();	
-					
+					frame.revalidate();		
 				}
 			});
 			
@@ -97,7 +97,9 @@ public class GenerateStatsPage extends JPanel {
 						.addContainerGap(30, Short.MAX_VALUE))
 			);
 			
-			//String[] columnName= {"Department", "Num of Patients"};
+			/* Creates a table that contains the data related to the number of patients in 
+			* a department
+			*/
 			trafficTbl = new JTable();
 			trafficTbl.setModel(new DefaultTableModel(
 				adminUser.getTrafficForDepartments(),
@@ -107,6 +109,9 @@ public class GenerateStatsPage extends JPanel {
 			));
 			scrollPane_1.setViewportView(trafficTbl);
 			
+			/* Creates a table that contains the data related to the number of users 
+			 *assigned to specific role
+			 */
 			usersTbl = new JTable();
 			usersTbl.setModel(new DefaultTableModel(
 				new Object[][] {
@@ -132,6 +137,7 @@ public class GenerateStatsPage extends JPanel {
 			logoutBtn.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mousePressed(MouseEvent e) {
+					// Displays the logout page
 					LogoutPage panel = new LogoutPage(frame);
 					frame.setContentPane(panel);
 					frame.revalidate();	

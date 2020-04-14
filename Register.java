@@ -22,7 +22,12 @@ import javax.swing.JScrollBar;
 import java.awt.ScrollPane;
 import javax.swing.JPasswordField;
 
+/**
+ * JPanel to display GUI, so that new users can register
+ * into the system.
+ */
 public class Register extends JPanel {
+	
 	private JTextField firstName;
 	private JTextField lastName;
 	private JTextField email;
@@ -31,9 +36,6 @@ public class Register extends JPanel {
 	private JPasswordField passField;
 	private JPasswordField confirmPassField;
 
-	/**
-	 * Create the panel.
-	 */
 	/**
 	 * @wbp.parser.constructor
 	 */

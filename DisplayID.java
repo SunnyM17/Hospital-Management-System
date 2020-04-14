@@ -10,11 +10,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * This panel displays the user ID assigned to the user after they  
+ * have register into the system.
+ */
 public class DisplayID extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
 	public DisplayID(JFrame frame, Authorize newUser, int id) {
 		
 		JLabel titleLbl = new JLabel("User ID ");
@@ -27,10 +28,10 @@ public class DisplayID extends JPanel {
 		loginPageLbl.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				// Displays the login page
 				Login panel = new Login(frame, newUser);
 				frame.setContentPane(panel);
 				frame.revalidate();
-
 			}
 		});
 		

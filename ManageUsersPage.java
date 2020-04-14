@@ -21,7 +21,8 @@ import javax.swing.ListSelectionModel;
 public class ManageUsersPage extends JPanel {
 
 	/**
-	 * The administrator is able to access this page to edit, delete and add users
+	 * JPanel for GUI so that the administrator is able
+	 * to edit, delete and add users
 	 */
 	public ManageUsersPage(JFrame frame, Admin adminUser) {
 		
@@ -64,10 +65,13 @@ public class ManageUsersPage extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				
-				String some = (String) userList.getSelectedValue();
-				some = some.substring(0,7);
-				System.out.println(some);
-				adminUser.deleteUser(Integer.parseInt(some));
+				// Gets the ID of the selected user
+				String selectedUser = (String) userList.getSelectedValue();
+				selectedUser= selectedUser.substring(0,7);
+				System.out.println(selectedUser);
+				
+				adminUser.deleteUser(Integer.parseInt(selectedUser));
+				// Displays the Manage Users panel
 				ManageUsersPage panel = new ManageUsersPage(frame, adminUser);
 				frame.setContentPane(panel);
 				frame.revalidate();	
@@ -79,9 +83,12 @@ public class ManageUsersPage extends JPanel {
 		editBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-			
+				
+				// Gets the ID of the selected user
 				String id = (String) userList.getSelectedValue();
 				id= id.substring(0,7);
+				
+				// Displays the update information panel
 				UpdateInfo panel = new UpdateInfo(frame, Database.getUser(adminUser.getUserID()), Database.getUser(Integer.parseInt(id)));
 				frame.setContentPane(panel);
 				frame.setSize(640, 470);
@@ -95,6 +102,8 @@ public class ManageUsersPage extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				Authorize auth = new Authorize();
+				
+				// Displays the register panel
 				Register panel = new Register(frame, auth, adminUser);
 				frame.setContentPane(panel);
 				frame.setSize(602, 330);
@@ -144,7 +153,7 @@ public class ManageUsersPage extends JPanel {
 		scrollPane.setColumnHeaderView(lblNewLabel_1);
 		
 		
-		
+		// Creates a list of all users
 		userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		userList.setModel(new AbstractListModel() {
 			String[] values = Hospital.getListOfUsers(Database.getAllUsers());
@@ -168,6 +177,7 @@ public class ManageUsersPage extends JPanel {
 		homeBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				// Displays the administrator's home page
 				AdminPage panel = new AdminPage(frame, adminUser);
 				frame.setContentPane(panel);
 				frame.revalidate();

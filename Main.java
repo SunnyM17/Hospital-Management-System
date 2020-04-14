@@ -15,8 +15,9 @@ public class Main {
 
 	private JFrame frame;
 	Authorize auth = new Authorize();
+	
 	/**
-	 * Launch the application.
+	 * Launches the application.
 	 */
 	public static void main (String[] args) { 
 		EventQueue.invokeLater(new Runnable() {

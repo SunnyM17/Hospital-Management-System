@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import org.junit.Test;
+
 public class AuthorizeTestClass {
 	
 	/*
@@ -22,7 +24,7 @@ public class AuthorizeTestClass {
 		
 		Authorize auth = new Authorize();
 		int adminID = auth.generateID(0);
-		int testAdmin = adminID - (1000000 - admin(ID));
+		int testAdmin = adminID - (1000000 - adminID);
 		assertEquals("ID should be of administrator class", 1000000,testAdmin);
 		
 		int docID = auth.generateID(1);
