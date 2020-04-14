@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
+
 /**
- * Represents hospital's information
+ * Represents hospital's information.
  */
 public class Hospital {
 
@@ -51,6 +52,14 @@ public class Hospital {
 	}
 	
 	
+	/**
+	 * Gets a list of all the specified users from the database and arranges
+     * their id and name into a string and stores them into an array.
+     * The array is sorted in ascending order based on the ID of a user.
+     * 
+	 * @param	users		All users of a certain role.
+	 * @return	String[]	This contains the ID and full name of all the users
+	 */
 	public static String[] getListOfUsers(Map<Integer, Users> users) {
 		
 		String[] userBasicInfo = new String[users.size()];

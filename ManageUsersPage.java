@@ -147,7 +147,7 @@ public class ManageUsersPage extends JPanel {
 		
 		userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		userList.setModel(new AbstractListModel() {
-			String[] values = adminUser.getListOfUsers();
+			String[] values = Hospital.getListOfUsers(Database.getAllUsers());
 			
 			public int getSize() {
 				return values.length;

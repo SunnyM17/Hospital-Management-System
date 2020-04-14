@@ -16,9 +16,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class AssistantPage extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * Displays the page that the Assistant will see
+	 * when it logins to the system.
 	 */
 	public AssistantPage(JFrame frame, Users assistantUser) {
+		
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.WHITE);
 		
@@ -109,6 +111,15 @@ public class AssistantPage extends JPanel {
 		JLayeredPane layeredPane = new JLayeredPane();
 		
 		JButton btnNewButton = new JButton("Update My Information");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				UpdateInfo panel = new UpdateInfo(frame, Database.getUser(assistantUser.getUserID()), Database.getUser(assistantUser.getUserID()));
+				frame.setContentPane(panel);
+				frame.revalidate();
+			}
+		});
+		
 		GroupLayout gl_panel2 = new GroupLayout(panel2);
 		gl_panel2.setHorizontalGroup(
 			gl_panel2.createParallelGroup(Alignment.TRAILING)
@@ -146,6 +157,7 @@ public class AssistantPage extends JPanel {
 		logoutBtn.setBackground(Color.LIGHT_GRAY);
 		logoutBtn.setForeground(Color.BLACK);
 		logoutBtn.setHorizontalAlignment(SwingConstants.RIGHT);
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)

@@ -1,3 +1,7 @@
+
+/**
+ * Represents the Assistant. 
+ */
 public class Assistant extends Users
 {
     private int assistantID = 400;
