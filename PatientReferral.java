@@ -64,23 +64,23 @@ public class PatientReferral extends JPanel {
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		
-		//Textfield for pressumed conditions
+		//Textfield for presumed conditions
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		
-		//Textfield to take in the presumed conditions
+		//Textfield to take in first test
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		
-		//Textfield to take in first test
+		//Textfield to take in second test
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
 		
-		//Textfield to take in the second test
+		//Textfield to take in the third test
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
 		
-		//Textfield to take in the third test
+		//Textfield to take in medical opinion
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
 		
@@ -104,12 +104,12 @@ public class PatientReferral extends JPanel {
 					fw = new FileWriter(Database.LOCATION+"\\" + patientFileName + ".txt", true);
 					bw = new BufferedWriter(fw);
 					pw = new PrintWriter(bw);
-					pw.println(textField_1.getText());
-					pw.println(textField_2.getText());
-					pw.println(textField_3.getText());
+					pw.println("Doctor's name: "+textField_1.getText());
+					pw.println("Presumed Conditions: "+textField_2.getText());
+					pw.println("Recommended tests: "+textField_3.getText());
 					pw.println(textField_4.getText());
 					pw.println(textField_5.getText());
-					pw.println(textField_6.getText());
+					pw.println("Medical opinion: "+textField_6.getText());
 					pw.close();bw.close();fw.close();
 					
 				}catch(IOException error) {
