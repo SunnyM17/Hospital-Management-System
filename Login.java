@@ -64,7 +64,11 @@ public class Login extends JPanel {
 					}
 					/* ID starts with 2, go to doctor GUI */
 					else if(value == 2 && temp) {
-						System.out.println("docor login");
+						System.out.println("doctor login");
+						DoctorPage drPanel = new DoctorPage(frame, Database.getDoctor(id));
+						frame.setContentPane(drPanel);
+						frame.setSize(657, 432);
+						frame.revalidate();	
 					}
 					/* ID starts with 3, go to patient GUI */
 					else if(value == 3 && temp) {
@@ -74,10 +78,12 @@ public class Login extends JPanel {
 						frame.setSize(657, 432);
 						frame.revalidate();	
 					}
-					/* ID starts with 3, go to assistant GUI */
+					/* ID starts with 4, go to assistant GUI */
 					else if(value == 4 && temp) {
 						System.out.println("assistant login");
-					} else if(value == 5 && temp) {
+					}
+					/* ID starts with 5, go to Nurse GUI */
+					else if(value == 5 && temp) {
 						System.out.println("nurse login");
 						NursePage nursePanel = new NursePage(frame, Database.getNurse(id));
 						frame.setContentPane(nursePanel);
@@ -104,8 +110,8 @@ public class Login extends JPanel {
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-					.addGap(161)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(57, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(passLbl)
 						.addComponent(idLbl))
@@ -116,12 +122,12 @@ public class Login extends JPanel {
 						.addComponent(loginLbl)
 						.addComponent(errorLbl, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(idTxtField, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(194, Short.MAX_VALUE))
+					.addGap(109))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(26)
+					.addContainerGap()
 					.addComponent(loginLbl)
 					.addGap(53)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -131,11 +137,11 @@ public class Login extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(passLbl)
 						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
 					.addComponent(errorLbl)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(doneBtn)
-					.addGap(36))
+					.addGap(46))
 		);
 		setLayout(groupLayout);
 
