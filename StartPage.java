@@ -42,7 +42,7 @@ public class StartPage extends JPanel {
 			public void mousePressed(MouseEvent e) {
 				Register panel = new Register(frame, auth);
 				frame.setContentPane(panel);
-				frame.setSize(629, 329);
+				frame.setSize(675, 432);
 				frame.revalidate();
 			}
 		});
@@ -51,25 +51,24 @@ public class StartPage extends JPanel {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(100)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(41)
-							.addComponent(label))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(93)
+							.addGap(62)
 							.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 332, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(225)
+							.addGap(193)
 							.addComponent(button, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(216)
+							.addGap(184)
 							.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(44, Short.MAX_VALUE))
+					.addContainerGap(101, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(34)
+					.addGap(128)
 					.addComponent(label)
 					.addGap(29)
 					.addComponent(label_1)
@@ -77,7 +76,7 @@ public class StartPage extends JPanel {
 					.addComponent(button)
 					.addGap(18)
 					.addComponent(button_1)
-					.addContainerGap(79, Short.MAX_VALUE))
+					.addContainerGap(139, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 

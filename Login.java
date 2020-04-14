@@ -67,7 +67,7 @@ public class Login extends JPanel {
 						System.out.println("doctor login");
 						DoctorPage drPanel = new DoctorPage(frame, Database.getDoctor(id));
 						frame.setContentPane(drPanel);
-						frame.setSize(657, 432);
+						frame.setSize(675, 432);
 						frame.revalidate();	
 					}
 					/* ID starts with 3, go to patient GUI */
@@ -83,7 +83,7 @@ public class Login extends JPanel {
 						System.out.println("assistant login");
 						AssistantPage patientPanel = new AssistantPage(frame, Database.getAssistant(id));
 						frame.setContentPane(patientPanel);
-						frame.setSize(657, 432);
+						frame.setSize(675, 432);
 						frame.revalidate();	
 					}
 					/* ID starts with 5, go to Nurse GUI */
@@ -110,39 +110,52 @@ public class Login extends JPanel {
 		
 		passwordField = new JPasswordField();
 		
+		JButton backBtn = new JButton("Back To Main Menu");
+		backBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				StartPage mainMenu = new StartPage(frame,returningUser);
+				frame.setContentPane(mainMenu);
+				frame.revalidate();
+			}
+		});
+		
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(125, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(idLbl)
-						.addComponent(passLbl))
-					.addGap(41)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(passwordField)
-						.addComponent(idTxtField, GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
-					.addGap(152))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(198)
-					.addComponent(errorLbl)
-					.addContainerGap(213, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(250)
-					.addComponent(loginLbl)
-					.addContainerGap(257, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(245)
-					.addComponent(doneBtn)
-					.addContainerGap(248, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(337)
+							.addComponent(loginLbl))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(110)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+										.addComponent(idLbl)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(passLbl)
+											.addGap(2)))
+									.addGap(41))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(backBtn)
+									.addPreferredGap(ComponentPlacement.RELATED)))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(errorLbl)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+									.addComponent(passwordField)
+									.addComponent(idTxtField, GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+									.addComponent(doneBtn, Alignment.TRAILING)))))
+					.addContainerGap(223, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(33)
+					.addGap(74)
 					.addComponent(loginLbl)
-					.addGap(36)
+					.addGap(58)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(idTxtField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(idLbl))
@@ -150,14 +163,15 @@ public class Login extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(passLbl))
-					.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-					.addComponent(errorLbl)
 					.addGap(18)
-					.addComponent(doneBtn)
-					.addGap(42))
+					.addComponent(errorLbl)
+					.addGap(27)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(doneBtn)
+						.addComponent(backBtn))
+					.addContainerGap(112, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 
 	}
-
 }

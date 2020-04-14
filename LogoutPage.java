@@ -23,20 +23,38 @@ public class LogoutPage extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("You have successfully logged out!");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		
+		JButton backBtn = new JButton("Back to Main Menu");
+		backBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				Authorize auth = new Authorize();
+				StartPage mainMenu = new StartPage(frame,auth);
+				frame.setContentPane(mainMenu);
+				frame.revalidate();
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-					.addGap(172)
-					.addComponent(lblNewLabel)
-					.addContainerGap(180, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(176)
+							.addComponent(lblNewLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(246)
+							.addComponent(backBtn)))
+					.addContainerGap(177, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(180)
 					.addComponent(lblNewLabel)
-					.addContainerGap(231, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(backBtn)
+					.addContainerGap(84, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 	}

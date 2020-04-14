@@ -75,7 +75,7 @@ public class Register extends JPanel {
 				else {
 					TooShortPassword panel = new TooShortPassword(frame, newUser);
 					frame.setContentPane(panel);
-					frame.setSize(499, 303);
+					frame.setSize(675, 432);
 					frame.revalidate();	
 				}
 				
@@ -119,9 +119,21 @@ public class Register extends JPanel {
 		passField = new JPasswordField();
 		
 		confirmPassField = new JPasswordField();
+		
+		JButton backBtn = new JButton("Back To Main Menu");
+		backBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				StartPage mainMenu = new StartPage(frame,newUser);
+				frame.setContentPane(mainMenu);
+				frame.revalidate();
+			}
+		});
+		backBtn.setForeground(Color.BLACK);
+		backBtn.setBackground(SystemColor.menu);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(23)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -130,33 +142,36 @@ public class Register extends JPanel {
 						.addComponent(emailLbl)
 						.addComponent(addressLbl)
 						.addComponent(lblNewLabel_2))
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(email, 0, 0, Short.MAX_VALUE)
-						.addComponent(phoneNum, 0, 0, Short.MAX_VALUE)
-						.addComponent(address, GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+					.addGap(20)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(lastName, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-								.addComponent(firstName, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addGap(32)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(passLbl, Alignment.TRAILING)
-						.addComponent(selectionLbl, Alignment.TRAILING)
-						.addComponent(confirmPassLbl, Alignment.TRAILING))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(list, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-						.addComponent(passField, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-						.addComponent(confirmPassField, GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
-					.addContainerGap())
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(265, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(registerBtn)
-						.addComponent(titleLbl))
-					.addGap(260))
+							.addComponent(titleLbl)
+							.addGap(260))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(email, 0, 0, Short.MAX_VALUE)
+										.addComponent(phoneNum, 0, 0, Short.MAX_VALUE)
+										.addComponent(address, GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+												.addComponent(lastName, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+												.addComponent(firstName, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+											.addPreferredGap(ComponentPlacement.RELATED)))
+									.addGap(32)
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+										.addComponent(passLbl)
+										.addComponent(confirmPassLbl)
+										.addComponent(selectionLbl)))
+								.addComponent(backBtn))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(list, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+								.addComponent(passField, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+								.addComponent(confirmPassField, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+								.addComponent(registerBtn))
+							.addContainerGap())))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -177,6 +192,11 @@ public class Register extends JPanel {
 						.addComponent(confirmPassField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(21)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(list, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
+								.addComponent(selectionLbl)))
+						.addGroup(groupLayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(emailLbl)
@@ -191,15 +211,12 @@ public class Register extends JPanel {
 									.addComponent(lblNewLabel_2))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(11)
-									.addComponent(phoneNum, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(21)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(list, GroupLayout.PREFERRED_SIZE, 98, GroupLayout.PREFERRED_SIZE)
-								.addComponent(selectionLbl))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(registerBtn)))
-					.addGap(20))
+									.addComponent(phoneNum, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))))
+					.addGap(56)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(registerBtn)
+						.addComponent(backBtn))
+					.addGap(96))
 		);
 		setLayout(groupLayout);
 		

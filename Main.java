@@ -36,7 +36,7 @@ public class Main {
 		
 		StartPage panel = new StartPage(frame, auth);
 		frame.setContentPane(panel);
-		frame.resize(555,295);
+		frame.setSize(675, 432);
 		frame.revalidate();
 	}
 	
