@@ -116,22 +116,26 @@ public class GenSchedule extends JPanel {
 			
 			String doctorFile = br.readLine();
 			
+			br.close();
 			
 			FileInputStream fr = new FileInputStream(Database.LOCATION + "\\" + doctorFile + ".txt");
 			BufferedReader bs = new BufferedReader(new InputStreamReader(fr));
-			for(int j = 0; j<5;j++)
+			for(int j = 0; j<6;j++)
 			{
 				bs.readLine();
 			}
 			
 			ArrayList<String> docAvailable = new ArrayList<String>();
 			
-			while(bs.readLine() != null)
+			String line = bs.readLine();
+			while(line != null)
 			{
 				
-				System.out.println(bs.readLine());
-				docAvailable.add(bs.readLine());
+				System.out.println(line);
+				docAvailable.add(line);
+				line = bs.readLine();
 			}
+			bs.close();
 			
 			
 			
@@ -161,6 +165,8 @@ public class GenSchedule extends JPanel {
 						pw = new PrintWriter(bw);
 						pw.println("Appointment: Monday, 9AM ");
 						pw.close();bw.close();fw.close();
+						
+						
 						
 					}catch(IOException e) {
 						e.printStackTrace();
