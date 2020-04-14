@@ -31,7 +31,7 @@ public class nurseSchedule extends JPanel {
 	private JTextField thursdayTextField;
 	private JTextField fridayTextField;
 
-	public nurseSchedule(JFrame frame, Admin adminUser) {
+	public nurseSchedule(JFrame frame, Admin adminUser, Users selectedUser) {
 	setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		JPanel panel_1 = new JPanel();

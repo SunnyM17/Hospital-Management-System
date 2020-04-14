@@ -23,7 +23,7 @@ public class ReviewSchedule extends JPanel {
 	 * @param user used to be able to read any Schedule 
 	 * from any user, not excluding any kind of user
 	 */
-	public ReviewSchedule(JFrame frame ,Doctor user) {
+	public ReviewSchedule(JFrame frame ,Doctor user, Users currentUser) {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
