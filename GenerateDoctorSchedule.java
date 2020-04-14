@@ -32,6 +32,8 @@ public class GenerateDoctorSchedule extends JPanel {
 	 * Creates the panel where the doctor can select
 	 * in a checkbox style, the times of the week where he would be available
 	 * for patient or any other appointments
+	 * @param frame allows for sub-frames of other necessary frames to use the same JFrame
+	 * @param user makes sure that the frame is being user for the correct User only
 	 */
 	public GenerateDoctorSchedule(JFrame frame, int id, Doctor user) {
 		

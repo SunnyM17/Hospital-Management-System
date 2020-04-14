@@ -1,6 +1,5 @@
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.AbstractListModel;
 import javax.swing.GroupLayout;
@@ -18,12 +17,17 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.BoxLayout;
-import java.awt.BorderLayout;
+
 
 public class AddDepartmentPage extends JPanel {
 	private JTextField departmentField;
 
+	/** displays page for user to add a new department to the hospital
+	 * This can only be accessed by administration staff
+	 * 
+	 * @param frame allows for sub-frames of other necessary frames to use the same JFrame
+	 * @param adminUser makes sure that the frame is being user for the correct User only
+	 *  */	
 	public AddDepartmentPage(JFrame frame, Admin adminUser) {
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.WHITE);

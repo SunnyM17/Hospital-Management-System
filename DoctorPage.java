@@ -3,14 +3,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -18,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class DoctorPage extends JPanel {
 
@@ -228,7 +220,7 @@ public class DoctorPage extends JPanel {
 		hospitalNameLbl.setFont(new Font("Tahoma", Font.BOLD, 19));
 		
 		/**
-		 * Allos the userDoctor to logout from the system when he clicks this button
+		 * Allows the userDoctor to logout from the system when he clicks this button
 		 */
 		JButton logoutBtn = new JButton("Logout");
 		logoutBtn.addMouseListener(new MouseAdapter() {

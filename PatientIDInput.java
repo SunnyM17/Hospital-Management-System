@@ -16,7 +16,9 @@ public class PatientIDInput extends JPanel {
 	private JTextField textField;
 
 	/**
-	 * Creates the panel
+	 * Creates the panel for user to input ID number of patient
+	 * @param frame allows for sub-frames of other necessary frames to use the same JFrame
+	 * @param user makes sure that the frame is being user for the correct User only
 	 */
 	public PatientIDInput(JFrame frame, Doctor user) {
 		
