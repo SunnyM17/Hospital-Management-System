@@ -51,10 +51,27 @@ public class ReviewSchedule extends JPanel {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				DoctorPage panel = new DoctorPage(frame, user);
-				frame.setContentPane(panel);
-				frame.setSize(602, 330);
-				frame.revalidate();
+				/* finds first digit of ID number of current user */
+				int firstDigit = Integer.parseInt(Integer.toString(currentUser.getUserID()).substring(0, 1));
+				/* if current user is doctor, return to doctor's page */
+				if (firstDigit == 2) {
+					DoctorPage panel = new DoctorPage(frame, user);
+					frame.setContentPane(panel);
+					frame.revalidate();
+				}
+				/* if current user is an assistant, return to assistant's page */
+				else if (firstDigit == 4) {
+					AssistantPage assistantPanel = new AssistantPage(frame, currentUser);
+					frame.setContentPane(assistantPanel);
+					frame.revalidate();
+				}
+				/* if current user is a nurse, return of nurse's page*/
+				else if (firstDigit == 5) {
+					NursePage nursePanel = new NursePage(frame, currentUser);
+					frame.setContentPane(nursePanel);
+					frame.revalidate();
+				}
+				
 				
 			}
 		});

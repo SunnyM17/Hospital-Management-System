@@ -153,7 +153,16 @@ public class AssistantPage extends JPanel {
 		JLabel hospitalNameLbl = new JLabel("Welcome to AHS Hospital Management System");
 		hospitalNameLbl.setFont(new Font("Tahoma", Font.BOLD, 19));
 		
+		/* log out button */
 		JButton logoutBtn = new JButton("Logout");
+		logoutBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				LogoutPage panel = new LogoutPage(frame);
+				frame.setContentPane(panel);
+				frame.revalidate();	
+			}
+		});
 		logoutBtn.setBackground(Color.LIGHT_GRAY);
 		logoutBtn.setForeground(Color.BLACK);
 		logoutBtn.setHorizontalAlignment(SwingConstants.RIGHT);

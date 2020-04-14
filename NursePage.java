@@ -18,7 +18,7 @@ public class NursePage extends JPanel {
 	 * JPanel for GUI for what a nurse sees then they log in to the system
 	 * Nurse is able to view their schedule and edit patient record
 	 */
-	public NursePage(JFrame frame, Nurse nurseUser) {
+	public NursePage(JFrame frame, Users nurseUser) {
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.WHITE);
 		
