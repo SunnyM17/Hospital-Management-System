@@ -70,7 +70,9 @@ public class SelectSchedule extends JPanel {
 				some = some.substring(0,7);
 				System.out.println(some);
 				
-				
+				ReviewSchedule panel = new ReviewSchedule(frame, Database.getDoctor(Integer.parseInt(some)) , Database.getUser(currentUser.getUserID()));
+				frame.setContentPane(panel);
+				frame.revalidate();
 			}
 		});
 		
@@ -241,6 +243,11 @@ public class SelectSchedule extends JPanel {
 				String selectedId = (String) userList.getSelectedValue();
 				selectedId = selectedId.substring(0,7);
 				System.out.println(selectedId);
+				
+				nurseSchedulePage panel = new nurseSchedulePage(frame, Database.getNurse(Integer.parseInt(selectedId)));
+				frame.setContentPane(panel);
+				frame.resize(490,400);
+				frame.revalidate();
 			}
 		});
 		
@@ -251,9 +258,9 @@ public class SelectSchedule extends JPanel {
 				String selectedId = (String) userList.getSelectedValue();
 				selectedId = selectedId.substring(0,7);
 				System.out.println(selectedId);
-				GenSchedule panel = new GenSchedule(frame, Database.getUser(Integer.parseInt(selectedId)));
+				nurseSchedule panel = new nurseSchedule(frame, adminUser, Database.getUser(Integer.parseInt(selectedId)));
 				frame.setContentPane(panel);
-				frame.resize(880, 430);
+				frame.resize(615, 450);
 				frame.revalidate();
 			}
 		});
