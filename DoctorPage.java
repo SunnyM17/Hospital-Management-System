@@ -27,7 +27,7 @@ public class DoctorPage extends JPanel {
 	 * JPanel to display GUI that patient will see when they log in to the system.
 	 * Gives options for patient to book appointment, upload recommendation
 	 */
-	public DoctorPage (JFrame frame, Doctor patientUser) {
+	public DoctorPage (JFrame frame, Doctor doctorUser) {
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.WHITE);
 		
@@ -65,7 +65,7 @@ public class DoctorPage extends JPanel {
 		scheduleAppointmentBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				GenerateDoctorSchedule drSched = new GenerateDoctorSchedule(patientUser.getUserID());
+				GenerateDoctorSchedule drSched = new GenerateDoctorSchedule(doctorUser.getUserID());
 				frame.setContentPane(drSched);
 				frame.setSize(750, 432);
 				frame.revalidate();
@@ -79,7 +79,7 @@ public class DoctorPage extends JPanel {
 		cancelAppointmentBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				ReviewSchedule RS = new ReviewSchedule(patientUser);
+				ReviewSchedule RS = new ReviewSchedule(doctorUser);
 				frame.setContentPane(RS);
 				frame.setSize(750, 432);
 				frame.revalidate();
@@ -145,7 +145,7 @@ public class DoctorPage extends JPanel {
 		
 		JLabel nameLbL = new JLabel("New label");
 		nameLbL.setFont(new Font("Times New Roman", Font.PLAIN, 17));
-		nameLbL.setText("Welcome " + patientUser.getFirstName() + " " + patientUser.getLastName() + " !");
+		nameLbL.setText("Welcome " + doctorUser.getFirstName() + " " + doctorUser.getLastName() + " !");
 		
 		JLayeredPane layeredPane = new JLayeredPane();
 		
@@ -154,7 +154,7 @@ public class DoctorPage extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				System.out.println("Update info button pressed");
-				UpdateInfo updateInfoPatient = new UpdateInfo(frame, Database.getUser(patientUser.getUserID()), Database.getUser(patientUser.getUserID()));
+				UpdateInfo updateInfoPatient = new UpdateInfo(frame, Database.getUser(doctorUser.getUserID()), Database.getUser(doctorUser.getUserID()));
 				frame.setContentPane(updateInfoPatient);
 				frame.setSize(657, 432);
 				frame.revalidate();	

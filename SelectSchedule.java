@@ -17,12 +17,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SelectSchedule extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
+	
 	public SelectSchedule(JFrame frame, Users currentUser, Map<Integer, Users> users) {
 		
 		JPanel panel2 = new JPanel();
@@ -73,21 +73,21 @@ public class SelectSchedule extends JPanel {
 				
 			}
 		});
+		
 		GroupLayout gl_panel2 = new GroupLayout(panel2);
 		gl_panel2.setHorizontalGroup(
 			gl_panel2.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panel2.createSequentialGroup()
 					.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel2.createSequentialGroup()
-							.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
-								.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel, Alignment.TRAILING))
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 589, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel2.createSequentialGroup()
-							.addGap(261)
-							.addComponent(viewBtn)))
+						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel, Alignment.TRAILING))
+					.addPreferredGap(ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 589, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
+				.addGroup(gl_panel2.createSequentialGroup()
+					.addContainerGap(256, Short.MAX_VALUE)
+					.addComponent(viewBtn, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
+					.addGap(253))
 		);
 		gl_panel2.setVerticalGroup(
 			gl_panel2.createParallelGroup(Alignment.LEADING)
@@ -172,6 +172,171 @@ public class SelectSchedule extends JPanel {
 					.addContainerGap(244, Short.MAX_VALUE)
 					.addComponent(titleLbl)
 					.addGap(164)
+					.addComponent(homeBtn))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(homeBtn)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(titleLbl)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
+		setLayout(groupLayout);
+	}
+	
+	/**
+	 * @wbp.parser.constructor
+	 */
+	public SelectSchedule(JFrame frame, Admin adminUser, Map<Integer, Users> users) {
+		
+		JPanel panel2 = new JPanel();
+		panel2.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_1 = new JLabel("Select a user to add or view schedule");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		JList userList = new JList();
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(panel, Alignment.TRAILING, 0, 0, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(42, Short.MAX_VALUE))
+		);
+		
+		JLabel lblNewLabel = new JLabel("");
+		
+		JLayeredPane layeredPane = new JLayeredPane();
+		
+		JScrollPane scrollPane = new JScrollPane();
+		
+		JButton viewBtn = new JButton("View");
+		viewBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		viewBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+				String selectedId = (String) userList.getSelectedValue();
+				selectedId = selectedId.substring(0,7);
+				System.out.println(selectedId);
+			}
+		});
+		
+		JButton addBtn = new JButton("Add");
+		addBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				String selectedId = (String) userList.getSelectedValue();
+				selectedId = selectedId.substring(0,7);
+				System.out.println(selectedId);
+				GenSchedule panel = new GenSchedule(frame, Database.getUser(Integer.parseInt(selectedId)));
+				frame.setContentPane(panel);
+				frame.resize(880, 430);
+				frame.revalidate();
+			}
+		});
+		
+		GroupLayout gl_panel2 = new GroupLayout(panel2);
+		gl_panel2.setHorizontalGroup(
+			gl_panel2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel2.createSequentialGroup()
+					.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel2.createSequentialGroup()
+							.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
+								.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel, Alignment.TRAILING))
+							.addPreferredGap(ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 589, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel2.createSequentialGroup()
+							.addGap(215)
+							.addComponent(viewBtn, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(addBtn, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap())
+		);
+		gl_panel2.setVerticalGroup(
+			gl_panel2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel2.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel2.createSequentialGroup()
+							.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGap(113)
+							.addComponent(lblNewLabel)))
+					.addGap(18)
+					.addGroup(gl_panel2.createParallelGroup(Alignment.BASELINE)
+						.addComponent(addBtn)
+						.addComponent(viewBtn))
+					.addContainerGap())
+		);
+		
+		
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		scrollPane.setColumnHeaderView(lblNewLabel_1);
+		
+		
+		
+		userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		userList.setModel(new AbstractListModel() {
+			String[] values = Hospital.getListOfUsers(users);
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		scrollPane.setViewportView(userList);
+		
+		
+		panel2.setLayout(gl_panel2);
+		
+		JLabel titleLbl = new JLabel("Schedule");
+		titleLbl.setFont(new Font("Tahoma", Font.BOLD, 19));
+		
+		JButton homeBtn = new JButton("Home");
+		homeBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				AdminPage panel = new AdminPage(frame, adminUser);
+				frame.setContentPane(panel);
+				frame.setSize(667, 432);
+				frame.revalidate();	
+			}
+		});
+		homeBtn.setBackground(Color.LIGHT_GRAY);
+		homeBtn.setForeground(Color.BLACK);
+		homeBtn.setHorizontalAlignment(SwingConstants.RIGHT);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(264, Short.MAX_VALUE)
+					.addComponent(titleLbl)
+					.addGap(191)
 					.addComponent(homeBtn))
 		);
 		gl_panel.setVerticalGroup(

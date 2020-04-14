@@ -32,6 +32,7 @@ public class AdminPage extends JPanel {
 		
 		JPanel panel3 = new JPanel();
 		panel3.setBackground(Color.WHITE);
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -64,6 +65,7 @@ public class AdminPage extends JPanel {
 			public void mousePressed(MouseEvent e) {
 				ManageUsersPage panel = new ManageUsersPage(frame, adminUser);
 				frame.setContentPane(panel);
+				frame.setSize(675, 425);
 				frame.revalidate();	
 				
 			}
@@ -96,10 +98,16 @@ public class AdminPage extends JPanel {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
+				SelectSchedule panel = new SelectSchedule(frame, adminUser, Database.getAllNurses());
+				frame.setContentPane(panel);
+				//frame.resize(620, 450);
+				frame.revalidate();
+				/**
 				nurseSchedule panel = new nurseSchedule(frame, adminUser);
 				frame.setContentPane(panel);
 				frame.resize(620, 450);
 				frame.revalidate();
+				**/
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));

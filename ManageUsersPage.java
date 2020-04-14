@@ -40,7 +40,7 @@ public class ManageUsersPage extends JPanel {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
+						.addComponent(panel2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
 						.addComponent(panel, Alignment.TRAILING, 0, 0, Short.MAX_VALUE))
 					.addContainerGap())
 		);
@@ -50,8 +50,8 @@ public class ManageUsersPage extends JPanel {
 					.addContainerGap()
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(27, Short.MAX_VALUE))
+					.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 293, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -119,14 +119,14 @@ public class ManageUsersPage extends JPanel {
 							.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
 								.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblNewLabel, Alignment.TRAILING))
-							.addPreferredGap(ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 589, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel2.createSequentialGroup()
-							.addGap(88)
+							.addGap(86)
 							.addComponent(editBtn, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-							.addGap(44)
+							.addGap(46)
 							.addComponent(deleteBtn)
-							.addGap(42)
+							.addGap(44)
 							.addComponent(addBtn)))
 					.addContainerGap())
 		);
@@ -140,12 +140,12 @@ public class ManageUsersPage extends JPanel {
 							.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addGap(113)
 							.addComponent(lblNewLabel)))
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(18)
 					.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
 						.addComponent(addBtn)
 						.addComponent(deleteBtn)
 						.addComponent(editBtn))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(23))
 		);
 		
 		

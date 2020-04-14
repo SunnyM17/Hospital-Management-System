@@ -236,7 +236,7 @@ public class Register extends JPanel {
 					ManageUsersPage panel = new ManageUsersPage(frame, adminUser);
 					Database.reload();
 					frame.setContentPane(panel);
-					frame.setSize(700, 400);
+					frame.setSize(675, 435);
 					frame.revalidate();
 					
 				}

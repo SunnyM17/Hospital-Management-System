@@ -1,489 +1,447 @@
 import javax.swing.JPanel;
 import java.awt.GridLayout;
+import java.awt.CheckboxGroup;
 import java.awt.Color;
 import javax.swing.JSplitPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.border.CompoundBorder;
+
+import javafx.scene.control.CheckBox;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.AbstractListModel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GenSchedule extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public GenSchedule() {
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 76, 0, 146, 129, 0};
-		gridBagLayout.rowHeights = new int[]{29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
+	public GenSchedule(JFrame frame, Users user) {
+		setBackground(Color.WHITE);
 		
-		JLabel lblNewLabel_5 = new JLabel("Schedule");
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_5 = new JLabel("Schedule Builder");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 18));
-		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
-		gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_5.gridx = 2;
-		gbc_lblNewLabel_5.gridy = 0;
-		add(lblNewLabel_5, gbc_lblNewLabel_5);
-		
-		JLabel lblNewLabel_6 = new JLabel("Builder");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 18));
-		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
-		gbc_lblNewLabel_6.anchor = GridBagConstraints.WEST;
-		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_6.gridx = 3;
-		gbc_lblNewLabel_6.gridy = 0;
-		add(lblNewLabel_6, gbc_lblNewLabel_6);
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addComponent(lblNewLabel_5)
+							.addGap(422))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(panel, GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
+							.addContainerGap())))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(lblNewLabel_5)
+					.addGap(32)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 414, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(45, Short.MAX_VALUE))
+		);
 		
 		JLabel lblNewLabel = new JLabel("Monday");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 2;
-		add(lblNewLabel, gbc_lblNewLabel);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		
+		JCheckBox cb0 = new JCheckBox("9:00AM-10:00AM");
+		cb0.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		JCheckBox cb1 = new JCheckBox("10:00AM - 11:00AM");
+		cb1.setHorizontalAlignment(SwingConstants.LEFT);
 		
 		JLabel lblNewLabel_1 = new JLabel("Tuesday");
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 1;
-		gbc_lblNewLabel_1.gridy = 2;
-		add(lblNewLabel_1, gbc_lblNewLabel_1);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		
+		JCheckBox cb9 = new JCheckBox("9:00AM-10:00AM");
+		cb9.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		JCheckBox cb10 = new JCheckBox("10:00AM - 11:00AM");
+		cb10.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		JCheckBox cb18 = new JCheckBox("9:00AM-10:00AM");
+		cb18.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		JCheckBox cb19 = new JCheckBox("10:00AM - 11:00AM");
+		cb19.setHorizontalAlignment(SwingConstants.LEFT);
 		
 		JLabel lblNewLabel_2 = new JLabel("Wednesday");
-		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_2.gridx = 2;
-		gbc_lblNewLabel_2.gridy = 2;
-		add(lblNewLabel_2, gbc_lblNewLabel_2);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		
+		JCheckBox cb27 = new JCheckBox("9:00AM-10:00AM");
+		cb27.setHorizontalAlignment(SwingConstants.LEFT);
 		
 		JLabel lblNewLabel_3 = new JLabel("Thursday");
-		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_3.gridx = 3;
-		gbc_lblNewLabel_3.gridy = 2;
-		add(lblNewLabel_3, gbc_lblNewLabel_3);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
 		JLabel lblNewLabel_4 = new JLabel("Friday");
-		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
-		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 0);
-		gbc_lblNewLabel_4.gridx = 4;
-		gbc_lblNewLabel_4.gridy = 2;
-		add(lblNewLabel_4, gbc_lblNewLabel_4);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
-		JCheckBox chckbxNewCheckBox_9 = new JCheckBox("9:00AM-10:00AM");
-		chckbxNewCheckBox_9.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_9 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_9.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_9.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_9.gridx = 0;
-		gbc_chckbxNewCheckBox_9.gridy = 3;
-		add(chckbxNewCheckBox_9, gbc_chckbxNewCheckBox_9);
+		JCheckBox cb37 = new JCheckBox("10:00AM - 11:00AM");
+		cb37.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_10 = new JCheckBox("9:00AM-10:00AM");
-		chckbxNewCheckBox_10.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_10 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_10.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_10.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_10.gridx = 1;
-		gbc_chckbxNewCheckBox_10.gridy = 3;
-		add(chckbxNewCheckBox_10, gbc_chckbxNewCheckBox_10);
+		JCheckBox cb36 = new JCheckBox("9:00AM-10:00AM");
+		cb36.setHorizontalAlignment(SwingConstants.LEFT);
+		//cb28.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_11 = new JCheckBox("9:00AM-10:00AM");
-		chckbxNewCheckBox_11.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_11 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_11.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_11.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_11.gridx = 2;
-		gbc_chckbxNewCheckBox_11.gridy = 3;
-		add(chckbxNewCheckBox_11, gbc_chckbxNewCheckBox_11);
+		JCheckBox cb2 = new JCheckBox("11:00AM-12:00PM");
+		//cb2.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_12 = new JCheckBox("9:00AM-10:00AM");
-		chckbxNewCheckBox_12.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_12 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_12.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_12.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_12.gridx = 3;
-		gbc_chckbxNewCheckBox_12.gridy = 3;
-		add(chckbxNewCheckBox_12, gbc_chckbxNewCheckBox_12);
+		JCheckBox cb11 = new JCheckBox("11:00AM-12:00PM");
+		//cb11.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("9:00AM-10:00AM");
-		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox = new GridBagConstraints();
-		gbc_chckbxNewCheckBox.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_chckbxNewCheckBox.insets = new Insets(0, 0, 5, 0);
-		gbc_chckbxNewCheckBox.gridx = 4;
-		gbc_chckbxNewCheckBox.gridy = 3;
-		add(chckbxNewCheckBox, gbc_chckbxNewCheckBox);
+		JCheckBox cb20 = new JCheckBox("11:00AM-12:00PM");
+		//cb20.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_1_1 = new JCheckBox("10:00AM - 11:00AM");
-		chckbxNewCheckBox_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_1_1 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_1_1.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_1_1.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_1_1.gridx = 0;
-		gbc_chckbxNewCheckBox_1_1.gridy = 4;
-		add(chckbxNewCheckBox_1_1, gbc_chckbxNewCheckBox_1_1);
+		JCheckBox cb38 = new JCheckBox("11:00AM-12:00PM");
+		//cb38.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_1_2 = new JCheckBox("10:00AM - 11:00AM");
-		chckbxNewCheckBox_1_2.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_1_2 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_1_2.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_1_2.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_1_2.gridx = 1;
-		gbc_chckbxNewCheckBox_1_2.gridy = 4;
-		add(chckbxNewCheckBox_1_2, gbc_chckbxNewCheckBox_1_2);
+		JCheckBox cb3 = new JCheckBox("12:00PM-1:00PM");
+		//cb3.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_1_3 = new JCheckBox("10:00AM - 11:00AM");
-		chckbxNewCheckBox_1_3.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_1_3 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_1_3.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_1_3.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_1_3.gridx = 2;
-		gbc_chckbxNewCheckBox_1_3.gridy = 4;
-		add(chckbxNewCheckBox_1_3, gbc_chckbxNewCheckBox_1_3);
+		JCheckBox cb12 = new JCheckBox("12:00PM-1:00PM");
+		//cb12.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_1_4 = new JCheckBox("10:00AM - 11:00AM");
-		chckbxNewCheckBox_1_4.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_1_4 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_1_4.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_1_4.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_1_4.gridx = 3;
-		gbc_chckbxNewCheckBox_1_4.gridy = 4;
-		add(chckbxNewCheckBox_1_4, gbc_chckbxNewCheckBox_1_4);
+		JCheckBox cb21 = new JCheckBox("12:00PM-1:00PM");
+		//cb21.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("10:00AM - 11:00AM");
-		chckbxNewCheckBox_1.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_1 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_1.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_1.insets = new Insets(0, 0, 5, 0);
-		gbc_chckbxNewCheckBox_1.gridx = 4;
-		gbc_chckbxNewCheckBox_1.gridy = 4;
-		add(chckbxNewCheckBox_1, gbc_chckbxNewCheckBox_1);
+		JCheckBox cb30 = new JCheckBox("12:00PM-1:00PM");
+		//cb30.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_2_1 = new JCheckBox("11:00AM-12:00PM");
-		chckbxNewCheckBox_2_1.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_2_1 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_2_1.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_2_1.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_2_1.gridx = 0;
-		gbc_chckbxNewCheckBox_2_1.gridy = 5;
-		add(chckbxNewCheckBox_2_1, gbc_chckbxNewCheckBox_2_1);
+		JCheckBox cb39 = new JCheckBox("12:00PM-1:00PM");
+		//cb4.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_2_2 = new JCheckBox("11:00AM-12:00PM");
-		chckbxNewCheckBox_2_2.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_2_2 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_2_2.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_2_2.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_2_2.gridx = 1;
-		gbc_chckbxNewCheckBox_2_2.gridy = 5;
-		add(chckbxNewCheckBox_2_2, gbc_chckbxNewCheckBox_2_2);
+		JCheckBox cb13 = new JCheckBox("1:00PM - 2:00PM");
+		//cb13.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_2_3 = new JCheckBox("11:00AM-12:00PM");
-		chckbxNewCheckBox_2_3.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_2_3 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_2_3.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_2_3.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_2_3.gridx = 2;
-		gbc_chckbxNewCheckBox_2_3.gridy = 5;
-		add(chckbxNewCheckBox_2_3, gbc_chckbxNewCheckBox_2_3);
+		JCheckBox cb22 = new JCheckBox("1:00PM - 2:00PM");
+		//cb22.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_2_4 = new JCheckBox("11:00AM-12:00PM");
-		chckbxNewCheckBox_2_4.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_2_4 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_2_4.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_2_4.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_2_4.gridx = 3;
-		gbc_chckbxNewCheckBox_2_4.gridy = 5;
-		add(chckbxNewCheckBox_2_4, gbc_chckbxNewCheckBox_2_4);
+		JCheckBox cb31 = new JCheckBox("1:00PM - 2:00PM");
+		//cb31.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("11:00AM-12:00PM");
-		chckbxNewCheckBox_2.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_2 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_2.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_2.insets = new Insets(0, 0, 5, 0);
-		gbc_chckbxNewCheckBox_2.gridx = 4;
-		gbc_chckbxNewCheckBox_2.gridy = 5;
-		add(chckbxNewCheckBox_2, gbc_chckbxNewCheckBox_2);
+		JCheckBox cb40 = new JCheckBox("1:00PM - 2:00PM");
+		//cb5.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_3_1 = new JCheckBox("12:00PM-1:00PM");
-		chckbxNewCheckBox_3_1.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_3_1 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_3_1.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_3_1.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_3_1.gridx = 0;
-		gbc_chckbxNewCheckBox_3_1.gridy = 6;
-		add(chckbxNewCheckBox_3_1, gbc_chckbxNewCheckBox_3_1);
+		JCheckBox cb14 = new JCheckBox("2:00PM - 3:00PM");
+		//cb6.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_3_2 = new JCheckBox("12:00PM-1:00PM");
-		chckbxNewCheckBox_3_2.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_3_2 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_3_2.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_3_2.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_3_2.gridx = 1;
-		gbc_chckbxNewCheckBox_3_2.gridy = 6;
-		add(chckbxNewCheckBox_3_2, gbc_chckbxNewCheckBox_3_2);
+		JCheckBox cb15 = new JCheckBox("3:00PM - 4:00PM");
+		//cb14.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_3_3 = new JCheckBox("12:00PM-1:00PM");
-		chckbxNewCheckBox_3_3.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_3_3 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_3_3.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_3_3.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_3_3.gridx = 2;
-		gbc_chckbxNewCheckBox_3_3.gridy = 6;
-		add(chckbxNewCheckBox_3_3, gbc_chckbxNewCheckBox_3_3);
+		JCheckBox cb23 = new JCheckBox("2:00PM - 3:00PM");
+		//cb15.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_3_4 = new JCheckBox("12:00PM-1:00PM");
-		chckbxNewCheckBox_3_4.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_3_4 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_3_4.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_3_4.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_3_4.gridx = 3;
-		gbc_chckbxNewCheckBox_3_4.gridy = 6;
-		add(chckbxNewCheckBox_3_4, gbc_chckbxNewCheckBox_3_4);
+		JCheckBox cb24 = new JCheckBox("3:00PM - 4:00PM");
+		//cb23.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_3 = new JCheckBox("12:00PM-1:00PM");
-		chckbxNewCheckBox_3.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_3 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_3.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_3.insets = new Insets(0, 0, 5, 0);
-		gbc_chckbxNewCheckBox_3.gridx = 4;
-		gbc_chckbxNewCheckBox_3.gridy = 6;
-		add(chckbxNewCheckBox_3, gbc_chckbxNewCheckBox_3);
+		JCheckBox cb32 = new JCheckBox("2:00PM - 3:00PM");
+		//cb24.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_4_1 = new JCheckBox("1:00PM - 2:00PM");
-		chckbxNewCheckBox_4_1.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_4_1 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_4_1.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_4_1.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_4_1.gridx = 0;
-		gbc_chckbxNewCheckBox_4_1.gridy = 7;
-		add(chckbxNewCheckBox_4_1, gbc_chckbxNewCheckBox_4_1);
+		JCheckBox cb33 = new JCheckBox("3:00PM - 4:00PM");
+		//cb32.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_4_2 = new JCheckBox("1:00PM - 2:00PM");
-		chckbxNewCheckBox_4_2.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_4_2 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_4_2.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_4_2.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_4_2.gridx = 1;
-		gbc_chckbxNewCheckBox_4_2.gridy = 7;
-		add(chckbxNewCheckBox_4_2, gbc_chckbxNewCheckBox_4_2);
+		JCheckBox cb41 = new JCheckBox("2:00PM - 3:00PM");
+		//cb33.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_4_3 = new JCheckBox("1:00PM - 2:00PM");
-		chckbxNewCheckBox_4_3.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_4_3 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_4_3.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_4_3.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_4_3.gridx = 2;
-		gbc_chckbxNewCheckBox_4_3.gridy = 7;
-		add(chckbxNewCheckBox_4_3, gbc_chckbxNewCheckBox_4_3);
+		JCheckBox cb42 = new JCheckBox("3:00PM - 4:00PM");
+		//cb16.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_4_4 = new JCheckBox("1:00PM - 2:00PM");
-		chckbxNewCheckBox_4_4.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_4_4 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_4_4.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_4_4.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_4_4.gridx = 3;
-		gbc_chckbxNewCheckBox_4_4.gridy = 7;
-		add(chckbxNewCheckBox_4_4, gbc_chckbxNewCheckBox_4_4);
+		JCheckBox cb25 = new JCheckBox("4:00PM - 5:00PM");
+		//cb7.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_4 = new JCheckBox("1:00PM - 2:00PM");
-		chckbxNewCheckBox_4.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_4 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_4.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_4.insets = new Insets(0, 0, 5, 0);
-		gbc_chckbxNewCheckBox_4.gridx = 4;
-		gbc_chckbxNewCheckBox_4.gridy = 7;
-		add(chckbxNewCheckBox_4, gbc_chckbxNewCheckBox_4);
+		JCheckBox cb16 = new JCheckBox("4:00PM - 5:00PM");
 		
-		JCheckBox chckbxNewCheckBox_5_1 = new JCheckBox("2:00PM - 3:00PM");
-		chckbxNewCheckBox_5_1.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_5_1 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_5_1.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_5_1.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_5_1.gridx = 0;
-		gbc_chckbxNewCheckBox_5_1.gridy = 8;
-		add(chckbxNewCheckBox_5_1, gbc_chckbxNewCheckBox_5_1);
+		JCheckBox cb29 = new JCheckBox("11:00AM-12:00PM");
+		cb29.setHorizontalAlignment(SwingConstants.LEFT);
+		//cb39.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_5_2 = new JCheckBox("2:00PM - 3:00PM");
-		chckbxNewCheckBox_5_2.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_5_2 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_5_2.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_5_2.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_5_2.gridx = 1;
-		gbc_chckbxNewCheckBox_5_2.gridy = 8;
-		add(chckbxNewCheckBox_5_2, gbc_chckbxNewCheckBox_5_2);
+		JCheckBox cb4 = new JCheckBox("1:00PM - 2:00PM");
+		cb40.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_5_3 = new JCheckBox("2:00PM - 3:00PM");
-		chckbxNewCheckBox_5_3.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_5_3 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_5_3.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_5_3.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_5_3.gridx = 2;
-		gbc_chckbxNewCheckBox_5_3.gridy = 8;
-		add(chckbxNewCheckBox_5_3, gbc_chckbxNewCheckBox_5_3);
+		JCheckBox cb5 = new JCheckBox("2:00PM - 3:00PM");
 		
-		JCheckBox chckbxNewCheckBox_5_4 = new JCheckBox("2:00PM - 3:00PM");
-		chckbxNewCheckBox_5_4.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_5_4 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_5_4.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_5_4.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_5_4.gridx = 3;
-		gbc_chckbxNewCheckBox_5_4.gridy = 8;
-		add(chckbxNewCheckBox_5_4, gbc_chckbxNewCheckBox_5_4);
+		JCheckBox cb28 = new JCheckBox("10:00AM - 11:00AM");
+		//cb41.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_5 = new JCheckBox("2:00PM - 3:00PM");
-		chckbxNewCheckBox_5.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_5 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_5.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_5.insets = new Insets(0, 0, 5, 0);
-		gbc_chckbxNewCheckBox_5.gridx = 4;
-		gbc_chckbxNewCheckBox_5.gridy = 8;
-		add(chckbxNewCheckBox_5, gbc_chckbxNewCheckBox_5);
+		JCheckBox cb6 = new JCheckBox("3:00PM - 4:00PM");
+		//cb42.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_6_1 = new JCheckBox("3:00PM - 4:00PM");
-		chckbxNewCheckBox_6_1.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_6_1 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_6_1.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_6_1.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_6_1.gridx = 0;
-		gbc_chckbxNewCheckBox_6_1.gridy = 9;
-		add(chckbxNewCheckBox_6_1, gbc_chckbxNewCheckBox_6_1);
+		JCheckBox cb7 = new JCheckBox("4:00PM - 5:00PM");
+		//cb25.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_6_2 = new JCheckBox("3:00PM - 4:00PM");
-		chckbxNewCheckBox_6_2.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_6_2 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_6_2.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_6_2.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_6_2.gridx = 1;
-		gbc_chckbxNewCheckBox_6_2.gridy = 9;
-		add(chckbxNewCheckBox_6_2, gbc_chckbxNewCheckBox_6_2);
+		JCheckBox cb34 = new JCheckBox("4:00PM - 5:00PM");
+		//cb34.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_6_4 = new JCheckBox("3:00PM - 4:00PM");
-		chckbxNewCheckBox_6_4.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_6_4 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_6_4.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_6_4.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_6_4.gridx = 2;
-		gbc_chckbxNewCheckBox_6_4.gridy = 9;
-		add(chckbxNewCheckBox_6_4, gbc_chckbxNewCheckBox_6_4);
+		JCheckBox cb43 = new JCheckBox("4:00PM - 5:00PM");
+		//cb43.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_6_3 = new JCheckBox("3:00PM - 4:00PM");
-		chckbxNewCheckBox_6_3.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_6_3 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_6_3.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_6_3.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_6_3.gridx = 3;
-		gbc_chckbxNewCheckBox_6_3.gridy = 9;
-		add(chckbxNewCheckBox_6_3, gbc_chckbxNewCheckBox_6_3);
+		JCheckBox cb8 = new JCheckBox("5:00PM - 6:00PM");
+		//cb8.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_6 = new JCheckBox("3:00PM - 4:00PM");
-		chckbxNewCheckBox_6.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_6 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_6.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_6.insets = new Insets(0, 0, 5, 0);
-		gbc_chckbxNewCheckBox_6.gridx = 4;
-		gbc_chckbxNewCheckBox_6.gridy = 9;
-		add(chckbxNewCheckBox_6, gbc_chckbxNewCheckBox_6);
+		JCheckBox cb17 = new JCheckBox("5:00PM - 6:00PM");
+		//cb17.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_7_1 = new JCheckBox("4:00PM - 5:00PM");
-		chckbxNewCheckBox_7_1.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_7_1 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_7_1.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_7_1.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_7_1.gridx = 0;
-		gbc_chckbxNewCheckBox_7_1.gridy = 10;
-		add(chckbxNewCheckBox_7_1, gbc_chckbxNewCheckBox_7_1);
+		JCheckBox cb26 = new JCheckBox("5:00PM - 6:00PM");
+		//cb26.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_7_2 = new JCheckBox("4:00PM - 5:00PM");
-		chckbxNewCheckBox_7_2.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_7_2 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_7_2.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_7_2.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_7_2.gridx = 1;
-		gbc_chckbxNewCheckBox_7_2.gridy = 10;
-		add(chckbxNewCheckBox_7_2, gbc_chckbxNewCheckBox_7_2);
+		JCheckBox cb35 = new JCheckBox("5:00PM - 6:00PM");
+		//cb35.setHorizontalAlignment(SwingConstants.LEFT);
 		
-		JCheckBox chckbxNewCheckBox_7_3 = new JCheckBox("4:00PM - 5:00PM");
-		chckbxNewCheckBox_7_3.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_7_3 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_7_3.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_7_3.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_7_3.gridx = 2;
-		gbc_chckbxNewCheckBox_7_3.gridy = 10;
-		add(chckbxNewCheckBox_7_3, gbc_chckbxNewCheckBox_7_3);
+		JCheckBox cb44 = new JCheckBox("5:00PM - 6:00PM");
 		
-		JCheckBox chckbxNewCheckBox_7_4 = new JCheckBox("4:00PM - 5:00PM");
-		chckbxNewCheckBox_7_4.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_7_4 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_7_4.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_7_4.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxNewCheckBox_7_4.gridx = 3;
-		gbc_chckbxNewCheckBox_7_4.gridy = 10;
-		add(chckbxNewCheckBox_7_4, gbc_chckbxNewCheckBox_7_4);
+		JButton doneBtn = new JButton("Done");
+		doneBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				JCheckBox [] temp = new JCheckBox [] {cb0, cb1, cb2, cb3, cb4, cb5, cb6, cb7, cb8, cb9,
+						cb10, cb11, cb12, cb13, cb14, cb15, cb16, cb17, cb18, cb19, cb20, cb21, cb22, cb23, 
+						cb24, cb25, cb26, cb27, cb28, cb29, cb30, cb31, cb32, cb33, cb34, cb35, cb36, cb37,
+						cb38, cb39, cb40, cb41, cb42, cb43, cb44
+				};
+				ArrayList<JCheckBox> time = new ArrayList<JCheckBox>();
+				time.addAll(Arrays.asList(temp));
+				
+				FileSystem tempFile = new FileSystem(Integer.toString(user.getUserID()));
+				File file = tempFile.getFile();
+				
+				for(int i=0; i< time.size(); i++) {
+					if(time.get(i).isSelected() && i>=0 && i<=8) {
+						tempFile.writeToFile(file, "Schedule: " + "Monday " +time.get(i).getLabel());
+					}
+					else if(time.get(i).isSelected() && i>=9 && i<=17) {
+						tempFile.writeToFile(file, "Schedule: " + "Tuesday "+ time.get(i).getLabel());
+					}
+					else if(time.get(i).isSelected() && i>=17 && i<=26) {
+						tempFile.writeToFile(file, "Schedule: " + "Wednesday "+ time.get(i).getLabel());
+					}
+					else if(time.get(i).isSelected() && i>=26 && i<=35) {
+						tempFile.writeToFile(file, "Schedule: " + "Thursday "+ time.get(i).getLabel());
+					}
+					else if(time.get(i).isSelected() && i>=35 && i<=44) {
+						tempFile.writeToFile(file, "Schedule: " + "Friday "+ time.get(i).getLabel());
+					}
+				}
+					
+
+			}
+		});
 		
-		JCheckBox chckbxNewCheckBox_7 = new JCheckBox("4:00PM - 5:00PM");
-		chckbxNewCheckBox_7.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_7 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_7.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_7.insets = new Insets(0, 0, 5, 0);
-		gbc_chckbxNewCheckBox_7.gridx = 4;
-		gbc_chckbxNewCheckBox_7.gridy = 10;
-		add(chckbxNewCheckBox_7, gbc_chckbxNewCheckBox_7);
-		
-		JCheckBox chckbxNewCheckBox_8_1 = new JCheckBox("5:00PM - 6:00PM");
-		chckbxNewCheckBox_8_1.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_8_1 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_8_1.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_8_1.insets = new Insets(0, 0, 0, 5);
-		gbc_chckbxNewCheckBox_8_1.gridx = 0;
-		gbc_chckbxNewCheckBox_8_1.gridy = 11;
-		add(chckbxNewCheckBox_8_1, gbc_chckbxNewCheckBox_8_1);
-		
-		JCheckBox chckbxNewCheckBox_8_2 = new JCheckBox("5:00PM - 6:00PM");
-		chckbxNewCheckBox_8_2.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_8_2 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_8_2.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_8_2.insets = new Insets(0, 0, 0, 5);
-		gbc_chckbxNewCheckBox_8_2.gridx = 1;
-		gbc_chckbxNewCheckBox_8_2.gridy = 11;
-		add(chckbxNewCheckBox_8_2, gbc_chckbxNewCheckBox_8_2);
-		
-		JCheckBox chckbxNewCheckBox_8_4 = new JCheckBox("5:00PM - 6:00PM");
-		chckbxNewCheckBox_8_4.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_8_4 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_8_4.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_8_4.insets = new Insets(0, 0, 0, 5);
-		gbc_chckbxNewCheckBox_8_4.gridx = 2;
-		gbc_chckbxNewCheckBox_8_4.gridy = 11;
-		add(chckbxNewCheckBox_8_4, gbc_chckbxNewCheckBox_8_4);
-		
-		JCheckBox chckbxNewCheckBox_8_3 = new JCheckBox("5:00PM - 6:00PM");
-		chckbxNewCheckBox_8_3.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_8_3 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_8_3.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_8_3.insets = new Insets(0, 0, 0, 5);
-		gbc_chckbxNewCheckBox_8_3.gridx = 3;
-		gbc_chckbxNewCheckBox_8_3.gridy = 11;
-		add(chckbxNewCheckBox_8_3, gbc_chckbxNewCheckBox_8_3);
-		
-		JCheckBox chckbxNewCheckBox_8 = new JCheckBox("5:00PM - 6:00PM");
-		chckbxNewCheckBox_8.setHorizontalAlignment(SwingConstants.LEFT);
-		GridBagConstraints gbc_chckbxNewCheckBox_8 = new GridBagConstraints();
-		gbc_chckbxNewCheckBox_8.anchor = GridBagConstraints.WEST;
-		gbc_chckbxNewCheckBox_8.gridx = 4;
-		gbc_chckbxNewCheckBox_8.gridy = 11;
-		add(chckbxNewCheckBox_8, gbc_chckbxNewCheckBox_8);
+		JButton backBtn = new JButton("Back");
+		backBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+				int value = user.getUserID()/1000000;
+				/* ID starts with 1, go to admin GUI */
+				
+				SelectSchedule panel = new SelectSchedule(frame, Database.getAdmin(user.getUserID()), Database.getAllNurses());
+				frame.setContentPane(panel);
+				frame.setSize(675, 435);
+				frame.revalidate();	
+			
+			}
+		});
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(cb3)
+							.addComponent(cb0)
+							.addComponent(cb1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(cb4, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)
+							.addComponent(cb5)
+							.addComponent(lblNewLabel)
+							.addComponent(cb6)
+							.addComponent(cb7)
+							.addComponent(cb2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(cb8))
+					.addGap(14)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(cb17)
+						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(cb9)
+							.addComponent(cb11, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(cb12)
+							.addComponent(cb13)
+							.addComponent(cb14)
+							.addComponent(cb15)
+							.addComponent(cb16)
+							.addComponent(cb10))
+						.addComponent(lblNewLabel_1))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(backBtn, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(doneBtn))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+									.addComponent(cb22)
+									.addComponent(cb23)
+									.addComponent(cb24)
+									.addGroup(gl_panel.createSequentialGroup()
+										.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+											.addComponent(cb18)
+											.addComponent(cb21)
+											.addComponent(cb19)
+											.addComponent(cb25)
+											.addComponent(lblNewLabel_2))
+										.addGap(23)
+										.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+											.addComponent(cb34)
+											.addComponent(lblNewLabel_3)
+											.addComponent(cb28, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
+											.addComponent(cb30)
+											.addComponent(cb27)
+											.addComponent(cb31)
+											.addComponent(cb32)
+											.addComponent(cb33)
+											.addComponent(cb29)
+											.addComponent(cb35)))
+									.addComponent(cb20))
+								.addComponent(cb26))
+							.addGap(20)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(cb41)
+								.addComponent(cb40)
+								.addComponent(cb37, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE)
+								.addComponent(cb39)
+								.addComponent(cb38)
+								.addComponent(cb42)
+								.addComponent(lblNewLabel_4)
+								.addComponent(cb36)
+								.addComponent(cb43)
+								.addComponent(cb44))))
+					.addGap(38))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel_2)
+						.addComponent(lblNewLabel_3)
+						.addComponent(lblNewLabel_4)
+						.addComponent(lblNewLabel_1)
+						.addComponent(lblNewLabel))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(cb0)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(cb1)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(cb2)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(cb3))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+										.addComponent(cb18)
+										.addComponent(cb27)
+										.addComponent(cb36))
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+										.addComponent(cb19)
+										.addComponent(cb37)
+										.addComponent(cb28))
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+										.addComponent(cb20)
+										.addComponent(cb38)
+										.addComponent(cb29))
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+										.addComponent(cb21)
+										.addComponent(cb39)
+										.addComponent(cb30))
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+										.addComponent(cb22)
+										.addComponent(cb31)
+										.addComponent(cb40))
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+										.addComponent(cb23)
+										.addComponent(cb32)
+										.addComponent(cb41))
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+										.addComponent(cb24)
+										.addComponent(cb33)
+										.addComponent(cb42))))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(cb43)
+								.addComponent(cb34)))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(cb9)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(cb10)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(cb11)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(cb12)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(cb13)
+								.addComponent(cb4))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(cb14)
+								.addComponent(cb5))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(cb15)
+								.addComponent(cb6))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(cb16)
+								.addComponent(cb25)
+								.addComponent(cb7))))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(cb8)
+						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addComponent(cb17)
+							.addComponent(cb26)
+							.addComponent(cb35)
+							.addComponent(cb44)))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(doneBtn)
+						.addComponent(backBtn))
+					.addContainerGap(23, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
+		setLayout(groupLayout);
 
 	}
-
 }
