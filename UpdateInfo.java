@@ -118,19 +118,25 @@ public class UpdateInfo extends JPanel {
 					if(role == 1) {
 						ManageUsersPage panel = new ManageUsersPage(frame, Database.getAdmin(currentUser.getUserID()));
 						frame.setContentPane(panel);
-						frame.setSize(700, 450);
+						frame.setSize(675, 432);
+						frame.revalidate();	
+					}
+					else if(role == 2) {
+						DoctorPage updatedDoctorPage = new DoctorPage(frame, Database.getDoctor(editedUser.getUserID()));
+						frame.setContentPane(updatedDoctorPage);
+						frame.setSize(675, 432);
 						frame.revalidate();	
 					}
 					else if(role == 3) {
 						PatientPage updatedPatientPage = new PatientPage(frame, Database.getPatient(editedUser.getUserID()));
 						frame.setContentPane(updatedPatientPage);
-						frame.setSize(657, 432);
+						frame.setSize(675, 432);
 						frame.revalidate();	
 					}
 					else if(role == 4) {
 						AssistantPage updatedPatientPage = new AssistantPage(frame, Database.getPatient(editedUser.getUserID()));
 						frame.setContentPane(updatedPatientPage);
-						frame.setSize(657, 432);
+						frame.setSize(675, 432);
 						frame.revalidate();
 					}
 					

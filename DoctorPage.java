@@ -46,14 +46,14 @@ public class DoctorPage extends JPanel {
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 642, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(panel3, GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
 							.addGap(18)
-							.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 392, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -63,8 +63,8 @@ public class DoctorPage extends JPanel {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel3, GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-						.addComponent(panel2, GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+						.addComponent(panel2, GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+						.addComponent(panel3, GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
@@ -188,27 +188,26 @@ public class DoctorPage extends JPanel {
 				System.out.println("Update info button pressed");
 				UpdateInfo updateInfoPatient = new UpdateInfo(frame, Database.getUser(doctorUser.getUserID()), Database.getUser(doctorUser.getUserID()));
 				frame.setContentPane(updateInfoPatient);
-				frame.setSize(657, 432);
+				frame.setSize(657, 460);
 				frame.revalidate();	
 			}
 		});
 		updateInfoBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout gl_panel2 = new GroupLayout(panel2);
 		gl_panel2.setHorizontalGroup(
-			gl_panel2.createParallelGroup(Alignment.TRAILING)
+			gl_panel2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel2.createSequentialGroup()
 					.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
-						.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel, Alignment.TRAILING))
-					.addGap(98))
-				.addGroup(Alignment.LEADING, gl_panel2.createSequentialGroup()
-					.addGap(111)
-					.addComponent(updateInfoBtn, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(111, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_panel2.createSequentialGroup()
-					.addGap(93)
-					.addComponent(nameLbL)
-					.addContainerGap(93, Short.MAX_VALUE))
+						.addGroup(gl_panel2.createParallelGroup(Alignment.LEADING)
+							.addComponent(layeredPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNewLabel, Alignment.TRAILING))
+						.addGroup(gl_panel2.createSequentialGroup()
+							.addGap(95)
+							.addComponent(updateInfoBtn, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel2.createSequentialGroup()
+							.addGap(77)
+							.addComponent(nameLbL)))
+					.addContainerGap(77, Short.MAX_VALUE))
 		);
 		gl_panel2.setVerticalGroup(
 			gl_panel2.createParallelGroup(Alignment.LEADING)
@@ -221,7 +220,7 @@ public class DoctorPage extends JPanel {
 					.addComponent(lblNewLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(updateInfoBtn, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(53, Short.MAX_VALUE))
+					.addContainerGap(185, Short.MAX_VALUE))
 		);
 		panel2.setLayout(gl_panel2);
 		

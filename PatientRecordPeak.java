@@ -37,7 +37,6 @@ public class PatientRecordPeak extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				DoctorPage panel = new DoctorPage(frame, DoctorUser);
 				frame.setContentPane(panel);
-				frame.setSize(602, 330);
 				frame.revalidate();
 			}
 		});

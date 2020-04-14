@@ -127,7 +127,6 @@ public class PatientReferral extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				DoctorPage panel = new DoctorPage(frame, user);
 				frame.setContentPane(panel);
-				frame.setSize(602, 330);
 				frame.revalidate();
 				
 			}
