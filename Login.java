@@ -81,6 +81,10 @@ public class Login extends JPanel {
 					/* ID starts with 4, go to assistant GUI */
 					else if(value == 4 && temp) {
 						System.out.println("assistant login");
+						AssistantPage patientPanel = new AssistantPage(frame, Database.getAssistant(id));
+						frame.setContentPane(patientPanel);
+						frame.setSize(657, 432);
+						frame.revalidate();	
 					}
 					/* ID starts with 5, go to Nurse GUI */
 					else if(value == 5 && temp) {
