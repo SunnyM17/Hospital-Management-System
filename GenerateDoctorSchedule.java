@@ -5,6 +5,8 @@ import javax.swing.JSplitPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -22,13 +24,16 @@ import javax.swing.border.BevelBorder;
 import javax.swing.AbstractListModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 
 public class GenerateDoctorSchedule extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * Creates the panel where the doctor can select
+	 * in a checkbox style, the times of the week where he would be available
+	 * for patient or any other appointments
 	 */
-	public GenerateDoctorSchedule(int id) {
+	public GenerateDoctorSchedule(JFrame frame, int id, Doctor user) {
 		
 		String drFileName = String.valueOf(id);
 		
@@ -56,6 +61,25 @@ public class GenerateDoctorSchedule extends JPanel {
 		gbc_lblNewLabel_6.gridx = 3;
 		gbc_lblNewLabel_6.gridy = 0;
 		add(lblNewLabel_6, gbc_lblNewLabel_6);
+		
+		/*
+		 * This button is made so that, if clicked, it goes back to the Main Doctor's page GUI
+		 */
+		JButton btnNewButton = new JButton("Go Back");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				DoctorPage panel = new DoctorPage(frame, user);
+				frame.setContentPane(panel);
+				frame.setSize(602, 330);
+				frame.revalidate();
+			}
+		});
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
+		gbc_btnNewButton.gridx = 4;
+		gbc_btnNewButton.gridy = 1;
+		add(btnNewButton, gbc_btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Monday");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -92,10 +116,23 @@ public class GenerateDoctorSchedule extends JPanel {
 		gbc_lblNewLabel_4.gridy = 2;
 		add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
+		/**
+		 * This Comment will explain thoroughly every what every checkbox is constituted of. Not every single checkbox
+		 * will be commented because there is 45 of them, all with very similar functionality.
+		 * Basically, when the checkbox is in fact checked, the specific message, starting with "Schedule: " to denote
+		 * that the line item in file is part of the schedule of the patient, is written onto the Doctor's file to ensure
+		 * that his schedule is being caputured on his file. Every checkbox has a different checkbox, denoting what time of the day
+		 * and what day of the week the 1-hour availability window is for. This is the same case for all other checkboxes
+		 */
+		
 		JCheckBox chckbxNewCheckBox_9 = new JCheckBox("9:00AM-10:00AM");
 		chckbxNewCheckBox_9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				/*
+				 * We have File.IO classes because we require information of availability
+				 * to be written onto the Doctor's File.
+				 */
 				FileWriter fw = null;
 				BufferedWriter bw = null;
 				PrintWriter pw = null;

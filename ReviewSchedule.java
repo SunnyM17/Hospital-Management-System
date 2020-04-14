@@ -9,29 +9,62 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ReviewSchedule extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @param user used to be able to read any Schedule 
+	 * from any user, not excluding any kind of user
 	 */
-	public ReviewSchedule(Users user) {
+	public ReviewSchedule(JFrame frame ,Doctor user) {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		
+		/**
+		 * Button that, when clicked, takes user to logout frame and logs him/her
+		 * out of the system
+		 */
 		JButton btnNewButton = new JButton("Logout");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				LogoutPage panel = new LogoutPage(frame);
+				frame.setContentPane(panel);
+				frame.revalidate();	
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
+		/**
+		 * Button that, when clicked, takes back to the main user page
+		 * regardless of what user that is 
+		 */
 		JButton btnNewButton_1 = new JButton("Go Back");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DoctorPage panel = new DoctorPage(frame, user);
+				frame.setContentPane(panel);
+				frame.setSize(602, 330);
+				frame.revalidate();
+				
+			}
+		});
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		
-		
-		
+	
+		/**
+		 * This TextArea displays the Schedule, things that must be done for the
+		 * user that are currently in his user File
+		 */
 		
 		JTextArea textArea = new JTextArea();
 		GroupLayout groupLayout = new GroupLayout(this);
@@ -65,6 +98,13 @@ public class ReviewSchedule extends JPanel {
 		int userID = user.getUserID();
 		String stringID = String.valueOf(userID);
 		
+		/**
+		 * We need to use the try-catch statement as we use 
+		 * File.io to read from the users file, which is what we use the
+		 * userID for. Everything that starts with Schedule: is related 
+		 * to the schedule and must be printed
+		 *
+		 */
 		try {
 			BufferedReader bf = new BufferedReader(new FileReader(Database.LOCATION+"\\" + stringID+ ".txt"));
 			String line = bf.readLine();

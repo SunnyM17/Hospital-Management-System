@@ -15,22 +15,33 @@ public class PatientIDInput extends JPanel {
 	private JTextField textField;
 
 	/**
-	 * Create the panel.
+	 * Creates the panel
 	 */
-	public PatientIDInput(JFrame frame) {
+	public PatientIDInput(JFrame frame, Doctor user) {
 		
 		JLabel lblNewLabel = new JLabel("Enter Patient ID to fetch Record: ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		
+		/**
+		 * The textField will be used to hold the Doctor-inputed patient user ID
+		 * He does this so he can view the patient's record in the following frame
+		 * All this has to be with patient permission, else the Dr. would not have the ID
+		 */
 		textField = new JTextField();
 		textField.setColumns(10);
+		
+		/**
+		 * When this button is clicked, because of the MouseListener, 
+		 * The Doctor is taken to the next frame where he can see the patient's file
+		 *
+		 */
 		
 		JButton btnNewButton = new JButton("See Record");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				int userID = Integer.parseInt(textField.getText());
-				PatientRecordPeak patientRec = new PatientRecordPeak(userID);
+				PatientRecordPeak patientRec = new PatientRecordPeak(userID, frame, user);
 				frame.setContentPane(patientRec);
 				frame.setSize(750, 432);
 				frame.revalidate();
