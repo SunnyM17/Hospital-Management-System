@@ -85,22 +85,22 @@ public class DoctorPage extends JPanel {
 		 * where he can see the times he set as "Available" for patients to book
 		 * showing his schedule
 		 */
-		JButton cancelAppointmentBtn = new JButton("See My Schedule");
-		cancelAppointmentBtn.addMouseListener(new MouseAdapter() {
+		JButton seeScheduleBtn = new JButton("See My Schedule");
+		seeScheduleBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				ReviewSchedule RS = new ReviewSchedule(frame, doctorUser, Database.getUser(doctorUser.getUserID()));
 				frame.setContentPane(RS);
-				frame.setSize(750, 432);
+				frame.setSize(620, 400);
 				frame.revalidate();
 				
 			}
 		});
-		cancelAppointmentBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		seeScheduleBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
 		/**
 		 * This button works as, if clicked, takes the 
-		 * userDoctor to a frame where he can right a test referal for a patient
+		 * userDoctor to a frame where he can right a test referral for a patient
 		 * on his file so he can refer to that
 		 */
 		JButton btnSeeCoworkers = new JButton("Give Patient Referral\r\n");
@@ -117,8 +117,8 @@ public class DoctorPage extends JPanel {
 		
 		/**
 		 * This button, if clicked, takes the userDoctor to a frame where he must
-		 * enter the patient ID, and subsequentially is able to see the patients record
-		 * and any other referals made
+		 * enter the patient ID, and subsequently is able to see the patients record
+		 * and any other referrals made
 		 */
 		JButton btnSeePatientsRecord = new JButton("See Patients Record");
 		btnSeePatientsRecord.addMouseListener(new MouseAdapter() {
@@ -141,7 +141,7 @@ public class DoctorPage extends JPanel {
 					.addContainerGap()
 					.addGroup(gl_panel3.createParallelGroup(Alignment.LEADING)
 						.addComponent(scheduleAppointmentBtn, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 202, Short.MAX_VALUE)
-						.addComponent(cancelAppointmentBtn, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+						.addComponent(seeScheduleBtn, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
 						.addComponent(btnSeeCoworkers, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnSeePatientsRecord, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
@@ -152,7 +152,7 @@ public class DoctorPage extends JPanel {
 					.addGap(25)
 					.addComponent(scheduleAppointmentBtn)
 					.addGap(18)
-					.addComponent(cancelAppointmentBtn)
+					.addComponent(seeScheduleBtn)
 					.addGap(18)
 					.addComponent(btnSeeCoworkers, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
