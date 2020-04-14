@@ -8,12 +8,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.event.MouseAdapter;
@@ -22,7 +18,8 @@ import java.awt.event.MouseEvent;
 public class nurseSchedulePage extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * JPanel to display GUI that the nurse will see when they click view Schedule in their 
+	 * login display.
 	 */
 	public nurseSchedulePage(JFrame frame, Nurse nurseUser) {
 		
@@ -166,10 +163,6 @@ public class nurseSchedulePage extends JPanel {
 			e.printStackTrace();
 		}
 
-		
-
-		
-		
 		
 		JLabel lblNewLabel = new JLabel("Welcome " + nurseUser.getFirstName() + " " + nurseUser.getLastName());
 		lblNewLabel.setFont(new Font("Cambria", Font.BOLD, 20));
