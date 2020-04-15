@@ -129,7 +129,7 @@ public class GenSchedule extends JPanel {
 			
 			FileInputStream fr = new FileInputStream(Database.LOCATION + "\\" + doctorFile + ".txt");
 			BufferedReader bs = new BufferedReader(new InputStreamReader(fr));
-			for(int j = 0; j<6;j++)
+			for(int j = 0; j<5;j++)
 			{
 				bs.readLine();
 			}

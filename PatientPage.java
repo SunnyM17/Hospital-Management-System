@@ -192,7 +192,7 @@ public class PatientPage extends JPanel {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				FileSystem file = new FileSystem(doctorIDField.getText());
+				FileSystem file = new FileSystem(String.valueOf(patientUser.getUserID()));
 				file.writeToFile(file.getFile(), doctorIDField.getText());
 				Database.load(file.getFile());
 			}
