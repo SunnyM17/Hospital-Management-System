@@ -18,7 +18,9 @@ import java.awt.event.MouseEvent;
 public class PatientScheduling extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * JPanel to display the GUI. Allows the patient to 
+	 * schedule an appointment based on the doctor's 
+	 * schedule.
 	 */
 	public PatientScheduling(JFrame frame, Patient patientUser, String id) {
 		

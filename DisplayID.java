@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
+import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.MouseAdapter;
@@ -30,7 +31,6 @@ public class DisplayID extends JPanel {
 				// Displays the login page
 				Login panel = new Login(frame, newUser);
 				frame.setContentPane(panel);
-				frame.setSize(675, 432);
 				frame.revalidate();
 			}
 		});

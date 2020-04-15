@@ -100,23 +100,36 @@ public class FileSystem {
 		}
 	}
 	
+	/**
+	 * Reads the file and stores the line containing the specified 
+	 * key word and the term "Schedule: " in an array.
+	 * 
+	 * @param file		File that needs to be read.
+	 * @param id		Id of the user.
+	 * @param keyWord	A word that specifies which line is to be stored
+	 * 					in an array.
+	 * @return String[]	Contains all the lines that have the keyword and 
+	 * 					"Schedule: "
+	 */
 	public String [] readFromFile(File file, String id, String keyWord) {
 		ArrayList<String> tempArr = new ArrayList<String>();
 		
 		try {
-		BufferedReader br = new BufferedReader(new FileReader(file));
-		String line = br.readLine();
-		while(line != null) {
-			if(line.contains("Schedule: ") && line.contains(keyWord)){
-				tempArr.add(line);
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			String line = br.readLine();
+			while(line != null) {
+				if(line.contains("Schedule: ") && line.contains(keyWord)){
+					tempArr.add(line);
+				}
+				line = br.readLine();
 			}
-			line = br.readLine();
-		}
-		br.close();
+			br.close();
 		}catch(IOException e) {
 			System.out.println("There was an error");
 		}
+		
 		String[] schedule= new String[tempArr.size()];
+		// Adds the elements in an ArrayList to an array.
 		for(int i = 0; i< tempArr.size(); i++) {
 			schedule[i] = tempArr.get(i).substring(9);
 		}

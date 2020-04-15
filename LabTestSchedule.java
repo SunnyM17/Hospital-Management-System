@@ -29,11 +29,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * JPanel to display GUI to allow the assistant to select time
+ * for the lab tests.  
+ */
 public class LabTestSchedule extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
 	public LabTestSchedule(JFrame frame, Assistant assistantUser, Patient patientUser, String name) {
 		setBackground(Color.WHITE);
 		
@@ -64,6 +65,7 @@ public class LabTestSchedule extends JPanel {
 					.addContainerGap(45, Short.MAX_VALUE))
 		);
 		
+		/* Checkboxes */
 		JLabel lblNewLabel = new JLabel("Monday");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
 		
@@ -231,6 +233,7 @@ public class LabTestSchedule extends JPanel {
 				File file = tempFile.getFile();
 				
 				int checkSelection = 0;
+				/* Checks to see that no more than one item is selected */
 				for(int i =0; i<time.size(); i++) {
 					if(time.get(i).isSelected()) {
 						checkSelection++;
@@ -238,8 +241,9 @@ public class LabTestSchedule extends JPanel {
 					if(checkSelection >=2) {
 						break;
 					}
-					
 				}
+				
+				/* Writes the selection to a file*/
 				if(checkSelection == 1) {
 					for(int i=0; i< time.size(); i++) {
 						if(time.get(i).isSelected() && i>=0 && i<=8) {
@@ -268,7 +272,7 @@ public class LabTestSchedule extends JPanel {
 		backBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
+				// displays the Lab Test Page
 				LabTestPage panel = new LabTestPage(frame, assistantUser);
 				frame.setContentPane(panel);
 				frame.setSize(675, 435);

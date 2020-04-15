@@ -1,6 +1,13 @@
+/**
+ * Represents the patient.
+ *
+ */
 public class Patient extends Users
 {
     private int patientID = 200;
+    /**
+     * Class constructor.
+     */
     public Patient()
     {
         super.getUserID();

@@ -21,7 +21,7 @@ public class nurseSchedulePage extends JPanel {
 	 * JPanel to display GUI that the nurse will see when they click view Schedule in their 
 	 * login display.
 	 */
-	public nurseSchedulePage(JFrame frame, Nurse nurseUser) {
+	public nurseSchedulePage(JFrame frame, Nurse nurseUser, Users user) {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
@@ -94,10 +94,17 @@ public class nurseSchedulePage extends JPanel {
 			btnNewButton.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mousePressed(MouseEvent arg0) {
-					NursePage panel = new NursePage(frame, nurseUser);
+					if(user.getUserID() == nurseUser.getUserID()) {
+						NursePage panel = new NursePage(frame, nurseUser);
+						frame.setContentPane(panel);
+						frame.revalidate();
+					}
+					AdminPage panel = new AdminPage(frame, Database.getAdmin(user.getUserID()));
 					frame.setContentPane(panel);
+					frame.setSize(675, 435);
 					frame.revalidate();
 				}
+					
 			});
 			GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 			gl_panel_1.setHorizontalGroup(

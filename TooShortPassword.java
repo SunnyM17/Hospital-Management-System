@@ -15,7 +15,8 @@ public class TooShortPassword extends JPanel {
 	
 	Authorize auth = new Authorize();
 	/**
-	 * Create the panel
+	 * Displays a message that lets the user know that 
+	 * their password is too short.
 	 */
 	public TooShortPassword(JFrame frame, Authorize auto) {
 		

@@ -16,13 +16,15 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.JPasswordField;
 
+/**
+ * JPanel to display the GUI. Allows the user to enter 
+ * their User ID and password into a text field so that they 
+ * can login.
+ */
 public class Login extends JPanel {
 	private JTextField idTxtField;
 	private JPasswordField passwordField;
 
-	/**
-	 * Create the panel.
-	 */
 	public Login(JFrame frame, Authorize returningUser) {
 		setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		setBackground(Color.WHITE);

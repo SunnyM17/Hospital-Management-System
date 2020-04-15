@@ -22,7 +22,11 @@ import java.awt.event.ActionEvent;
 
 public class SelectSchedule extends JPanel {
 
-	
+	/**
+	 * Allows an user to select another user from 
+	 * a specified list so that they can view their schedule.  
+	 * 
+	 */
 	public SelectSchedule(JFrame frame, Users currentUser, Map<Integer, Users> users) {
 		
 		JPanel panel2 = new JPanel();
@@ -189,7 +193,11 @@ public class SelectSchedule extends JPanel {
 		panel.setLayout(gl_panel);
 		setLayout(groupLayout);
 	}
-	
+	/**
+	 * JPanel to display GUI. Allows the administrator to select
+	 * from a list of users so that it can create or view their schedule. 
+	 * their schedule.
+	 */
 	/**
 	 * @wbp.parser.constructor
 	 */
@@ -244,7 +252,7 @@ public class SelectSchedule extends JPanel {
 				selectedId = selectedId.substring(0,7);
 				System.out.println(selectedId);
 				
-				nurseSchedulePage panel = new nurseSchedulePage(frame, Database.getNurse(Integer.parseInt(selectedId)));
+				nurseSchedulePage panel = new nurseSchedulePage(frame, Database.getNurse(Integer.parseInt(selectedId)), Database.getUser(adminUser.getUserID()));
 				frame.setContentPane(panel);
 				frame.resize(490,400);
 				frame.revalidate();

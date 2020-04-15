@@ -16,12 +16,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ListSelectionModel;
 
+
+/**
+ *JPanel to display the GUI. Allows the assistant to 
+ *enter the patient's user ID and select a lab test 
+ *for that patient.
+ *
+ */
 public class LabTestPage extends JPanel {
 	private JTextField idTextField;
 
-	/**
-	 * Create the panel.
-	 */
 	public LabTestPage(JFrame frame, Assistant assistantUser) {
 		
 		JPanel panel = new JPanel();
@@ -35,6 +39,7 @@ public class LabTestPage extends JPanel {
 		
 		JList labTestList = new JList();
 		labTestList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		// List of Lab Tests
 		String[] labTests =  {"Complete Blood Count (CBC)", "Lipid Panel", "Liver Panel", "Urinalysis"}; 
 		
 		GroupLayout groupLayout = new GroupLayout(this);
@@ -94,9 +99,9 @@ public class LabTestPage extends JPanel {
 		nextBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				
 				if(Integer.parseInt((idTextField.getText()).substring(0, 1)) == 3 && Database.userExists(Integer.parseInt(idTextField.getText())) && !labTestList.isSelectionEmpty()) {
-			
+					
+					// Displays the page where the assistant can schedule lab test
 					LabTestSchedule panel = new LabTestSchedule(frame, assistantUser, Database.getPatient(Integer.parseInt(idTextField.getText())), (String) labTestList.getSelectedValue());
 					frame.resize(830, 432);
 					frame.setContentPane(panel);

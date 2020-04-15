@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
 public class StartPage extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * The user can select to login or register.
 	 */
 	public StartPage(JFrame frame, Authorize auth) {
 		setBackground(Color.WHITE);

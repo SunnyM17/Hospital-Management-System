@@ -16,7 +16,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class LogoutPage extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * JPanel to display GUI. Let's the user
+	 * know that they have successfully logged out 
+	 * of the system.
 	 */
 	public LogoutPage(JFrame frame) {
 		setBackground(Color.WHITE);

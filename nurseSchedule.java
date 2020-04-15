@@ -31,6 +31,11 @@ public class nurseSchedule extends JPanel {
 	private JTextField thursdayTextField;
 	private JTextField fridayTextField;
 
+	/**
+	 * JPanel to display GUI. Allows the administrator to create
+	 * a nurse's schedule.
+	 * 
+	 */
 	public nurseSchedule(JFrame frame, Admin adminUser, Users selectedUser) {
 	setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		

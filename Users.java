@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Represents a user in the system.
+ */
 public class Users
 {
     private String username;
@@ -156,17 +159,29 @@ public class Users
 
     // ==============================================================================================================================
 
-
+    /**
+     * Verifies that the first and last name have length at least 2.
+     * @param firstName2	First name of the user.
+     * @param lastName2		Last name of the user.
+     * @return boolean		Returns true if name follows convention.
+     */
 	public static boolean verifyName(String firstName2, String lastName2) {
 		/*  Verifies that the name follows convention
 		 */
-		 if (firstName2.length() > 0 && lastName2.length() > 0){
+		 if (firstName2.length() > 2 && lastName2.length() > 2){
 			  return true;
 		  }
 		  return false;
 		
 	}
-	
+	/**
+	 * Verifies that the password and confirmPass are the same and that 
+	 * the length of password is greater than 8. 
+	 * @param password		Password that the user enters.
+	 * @param confirmPass	Confirmation password that the user enters.
+	 * @return boolean		Returns true if password follows convention 
+	 * 						else it returns false.
+	 */
 	public static boolean verifyPassword(String password, String confirmPass) {
 		/* Verifies that the password follows convention
 		 */
@@ -175,7 +190,4 @@ public class Users
 		  }
 		  return false;	
 	}
-	
-	
-	
 }

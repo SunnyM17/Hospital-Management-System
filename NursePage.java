@@ -57,7 +57,9 @@ public class NursePage extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				System.out.println("View schedule button pressed");
-				
+				nurseSchedulePage panel = new nurseSchedulePage(frame, Database.getNurse(nurseUser.getUserID()), Database.getUser(nurseUser.getUserID()));
+				frame.setContentPane(panel);
+				frame.revalidate();
 			}
 		});
 		viewScheduleBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -67,6 +69,7 @@ public class NursePage extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
 				System.out.println("View Patient Record button pressed");
+				
 			}
 		});
 		viewPatientBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));

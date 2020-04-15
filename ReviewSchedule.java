@@ -19,7 +19,8 @@ import java.awt.Font;
 public class ReviewSchedule extends JPanel {
 
 	/**
-	 * Create the panel.
+	 * JPanel to display GUI. Allows the user to view 
+	 * the schedule of themselves or another user.S
 	 */
 	public ReviewSchedule(JFrame frame, Users selectedUser, Users currentUser) {
 		
@@ -177,12 +178,5 @@ public class ReviewSchedule extends JPanel {
 		catch(IOException e) {
 			e.printStackTrace();
 		}
-
-		
-
-
 	}
-	
-	
-	
 }
