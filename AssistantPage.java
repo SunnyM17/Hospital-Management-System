@@ -19,7 +19,7 @@ public class AssistantPage extends JPanel {
 	 * Displays the page that the Assistant will see
 	 * when it logins to the system.
 	 */
-	public AssistantPage(JFrame frame, Users assistantUser) {
+	public AssistantPage(JFrame frame, Assistant assistantUser) {
 		
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.WHITE);
@@ -76,8 +76,17 @@ public class AssistantPage extends JPanel {
 		});
 		statsBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		JButton addDepartmentBtn = new JButton("Schedule Lab Test");
-		addDepartmentBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		JButton scheduleTestBtn = new JButton("Schedule Lab Test");
+		scheduleTestBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				LabTestPage panel = new LabTestPage(frame, assistantUser);
+				frame.setContentPane(panel);
+				frame.resize(615, 360);
+				frame.revalidate();
+			}
+		});
+		scheduleTestBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GroupLayout gl_panel3 = new GroupLayout(panel3);
 		gl_panel3.setHorizontalGroup(
 			gl_panel3.createParallelGroup(Alignment.TRAILING)
@@ -86,7 +95,7 @@ public class AssistantPage extends JPanel {
 					.addGroup(gl_panel3.createParallelGroup(Alignment.LEADING)
 						.addComponent(appointmentsBtn, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE)
 						.addComponent(statsBtn, GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE)
-						.addComponent(addDepartmentBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+						.addComponent(scheduleTestBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panel3.setVerticalGroup(
@@ -97,7 +106,7 @@ public class AssistantPage extends JPanel {
 					.addGap(29)
 					.addComponent(statsBtn, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
 					.addGap(28)
-					.addComponent(addDepartmentBtn)
+					.addComponent(scheduleTestBtn)
 					.addContainerGap(79, Short.MAX_VALUE))
 		);
 		panel3.setLayout(gl_panel3);
