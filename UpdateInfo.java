@@ -135,7 +135,7 @@ public class UpdateInfo extends JPanel {
 						frame.revalidate();	
 					}
 					else if(role == 4) {
-						AssistantPage updatedPatientPage = new AssistantPage(frame, Database.getPatient(editedUser.getUserID()));
+						AssistantPage updatedPatientPage = new AssistantPage(frame, Database.getAssistant(editedUser.getUserID()));
 						frame.setContentPane(updatedPatientPage);
 						frame.setSize(675, 432);
 						frame.revalidate();
