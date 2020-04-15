@@ -36,6 +36,9 @@ public class PatientPage extends JPanel {
 		
 		JPanel panel3 = new JPanel();
 		panel3.setBackground(Color.WHITE);
+		
+		doctorIDField = new JTextField();
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -66,10 +69,10 @@ public class PatientPage extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				System.out.println("button pressed");
-				GenSchedule patientSchedule = new GenSchedule(frame, patientUser.getUserID());
-				frame.setContentPane(patientSchedule);
-				frame.setSize(675, 432);
-				frame.revalidate();	
+				PatientScheduling panel = new PatientScheduling(frame, patientUser, doctorIDField.getText());
+				frame.setContentPane(panel);
+				frame.resize(800, 440);
+				panel.revalidate();
 				
 			}
 		});
@@ -177,7 +180,7 @@ public class PatientPage extends JPanel {
 				//UpdateInfo updateInfoPatient = new UpdateInfo(frame, patientUser);
 				UpdateInfo updateInfoPatient = new UpdateInfo(frame, Database.getUser(patientUser.getUserID()), Database.getUser(patientUser.getUserID()));
 				frame.setContentPane(updateInfoPatient);
-				frame.setSize(675, 432);
+				frame.setSize(657, 432);
 				frame.revalidate();	
 			}
 		});
@@ -185,14 +188,14 @@ public class PatientPage extends JPanel {
 		
 		JLabel lblNewLabel_1 = new JLabel("Enter your doctor ID: ");
 		
-		doctorIDField = new JTextField();
+		
 		doctorIDField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Done");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent arg0) {
-				FileSystem file = new FileSystem(String.valueOf(patientUser.getUserID()));
+				FileSystem file = new FileSystem(doctorIDField.getText());
 				file.writeToFile(file.getFile(), doctorIDField.getText());
 				Database.load(file.getFile());
 			}
