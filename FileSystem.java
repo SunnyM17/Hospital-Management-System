@@ -1,7 +1,10 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  * Represents all the functionalities related to manage a 
@@ -96,6 +99,30 @@ public class FileSystem {
 			System.out.println("There was an error");
 		}
 	}
+	
+	public String [] readFromFile(File file, String id, String keyWord) {
+		ArrayList<String> tempArr = new ArrayList<String>();
+		
+		try {
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		String line = br.readLine();
+		while(line != null) {
+			if(line.contains("Schedule: ") && line.contains(keyWord)){
+				tempArr.add(line);
+			}
+			line = br.readLine();
+		}
+		br.close();
+		}catch(IOException e) {
+			System.out.println("There was an error");
+		}
+		String[] schedule= new String[tempArr.size()];
+		for(int i = 0; i< tempArr.size(); i++) {
+			schedule[i] = tempArr.get(i).substring(9);
+		}
+		return schedule;
+	}
+		
 	
 	/**
 	 * Deletes an existing text file.
