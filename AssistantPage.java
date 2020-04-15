@@ -55,14 +55,6 @@ public class AssistantPage extends JPanel {
 					.addContainerGap())
 		);
 		
-		JButton appointmentsBtn = new JButton("Manage Appointments");
-		appointmentsBtn.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-			}
-		});
-		appointmentsBtn.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
 		
 		JButton statsBtn = new JButton("View Doctor's Schedule");
 		statsBtn.addMouseListener(new MouseAdapter() {
@@ -93,21 +85,18 @@ public class AssistantPage extends JPanel {
 				.addGroup(gl_panel3.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel3.createParallelGroup(Alignment.LEADING)
-						.addComponent(appointmentsBtn, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE)
-						.addComponent(statsBtn, GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE)
-						.addComponent(scheduleTestBtn, GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+						.addComponent(statsBtn, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(scheduleTestBtn, GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panel3.setVerticalGroup(
 			gl_panel3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel3.createSequentialGroup()
-					.addGap(58)
-					.addComponent(appointmentsBtn)
-					.addGap(29)
+					.addGap(86)
 					.addComponent(statsBtn, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
-					.addGap(28)
+					.addGap(29)
 					.addComponent(scheduleTestBtn)
-					.addContainerGap(79, Short.MAX_VALUE))
+					.addContainerGap(104, Short.MAX_VALUE))
 		);
 		panel3.setLayout(gl_panel3);
 		
