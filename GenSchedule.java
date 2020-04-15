@@ -1,7 +1,4 @@
 import javax.swing.JPanel;
-import java.awt.GridLayout;
-import java.awt.Color;
-import javax.swing.JSplitPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
@@ -13,8 +10,6 @@ import java.awt.Insets;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,10 +17,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.swing.SwingConstants;
-import javax.swing.JList;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.AbstractListModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
@@ -79,7 +70,6 @@ public class GenSchedule extends JPanel {
 			public void mouseExited(MouseEvent arg0) {
 				PatientPage updatedPatientPage = new PatientPage(frame, Database.getPatient(id));
 				frame.setContentPane(updatedPatientPage);
-				frame.setSize(675, 432);
 				frame.revalidate();	
 			}
 		});
