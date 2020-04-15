@@ -5,6 +5,8 @@ import javax.swing.JSplitPane;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -26,13 +28,14 @@ import javax.swing.border.BevelBorder;
 import javax.swing.AbstractListModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 
 public class GenSchedule extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public GenSchedule(int id) {
+	public GenSchedule(JFrame frame, int id) {
 		
 		String patientFileName = String.valueOf(id);
 		
@@ -69,6 +72,22 @@ public class GenSchedule extends JPanel {
 		gbc_lblNewLabel_6.gridx = 3;
 		gbc_lblNewLabel_6.gridy = 0;
 		add(lblNewLabel_6, gbc_lblNewLabel_6);
+		
+		JButton backBtn = new JButton("Back to Home");
+		backBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				PatientPage updatedPatientPage = new PatientPage(frame, Database.getPatient(id));
+				frame.setContentPane(updatedPatientPage);
+				frame.setSize(675, 432);
+				frame.revalidate();	
+			}
+		});
+		GridBagConstraints gbc_backBtn = new GridBagConstraints();
+		gbc_backBtn.insets = new Insets(0, 0, 5, 0);
+		gbc_backBtn.gridx = 4;
+		gbc_backBtn.gridy = 0;
+		add(backBtn, gbc_backBtn);
 		
 		JLabel lblNewLabel = new JLabel("Monday");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();

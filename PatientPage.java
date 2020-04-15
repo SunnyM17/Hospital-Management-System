@@ -66,6 +66,10 @@ public class PatientPage extends JPanel {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				System.out.println("button pressed");
+				GenSchedule patientSchedule = new GenSchedule(frame, patientUser.getUserID());
+				frame.setContentPane(patientSchedule);
+				frame.setSize(675, 432);
+				frame.revalidate();	
 				
 			}
 		});
@@ -173,7 +177,7 @@ public class PatientPage extends JPanel {
 				//UpdateInfo updateInfoPatient = new UpdateInfo(frame, patientUser);
 				UpdateInfo updateInfoPatient = new UpdateInfo(frame, Database.getUser(patientUser.getUserID()), Database.getUser(patientUser.getUserID()));
 				frame.setContentPane(updateInfoPatient);
-				frame.setSize(657, 432);
+				frame.setSize(675, 432);
 				frame.revalidate();	
 			}
 		});
